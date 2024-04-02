@@ -1,20 +1,35 @@
-import Product from "./ProductSchema.js"
+import { MongoClient, ServerApiVersion } from "mongodb"
+const uri = "mongodb+srv://nackademing02:4ELTwXD8jQRlJGdG@g2.3ozytrh.mongodb.net/?retryWrites=true&w=majority&appName=G2"
 
-import { mongoose } from "mongoose"
-database()
-
-async function database() {
-
-    try {
-
-        
-        mongoose.connect("mongodb://localhost:27017/g2")
-
-
-        const product = new Product({ name: "Kaka", price: 55, category: "food" })
-
-        console.log(product);
-        product.save()
+const client = new MongoClient(uri, {
+    serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
     }
-    catch (error) { console.error(error); }
+
+})
+
+async function run() {
+    console.log("test");
+    try {
+        await client.connect()
+        await client.db("admin").command({ ping: 1 })
+
+        console.log("Pinged your deployment");
+        const database = client.db("g2")
+        const collection = database.collection("Products")
+
+        const doc = { name: "Cookies", price: 55, category: "test" }
+        const res = await collection.insertOne(doc)
+        console.log(res.insertedId);
+    } catch (err) {
+        console.error(err);
+    }
+
+    finally {
+        await client.close()
+    }
+
 }
+run().catch(console.dir)
