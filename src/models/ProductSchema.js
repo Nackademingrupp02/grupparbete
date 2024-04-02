@@ -8,8 +8,8 @@ const ProductsSchema = new mongoose.Schema({
     price: { type: Number, min: 1, max:100000, required:true},
     category: { type: String, required:true, minLength: 2, maxLength: 20},
 })
-const Product = mongoose.model("Product", ProductsSchema)
-export default  Product
+const Products = mongoose.model("Products", ProductsSchema)
+export default  Products
 
 
 
