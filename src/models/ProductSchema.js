@@ -4,9 +4,9 @@ import  mongoose from "mongoose"
 
 
 const ProductsSchema = new mongoose.Schema({
-    name: { type: String },
+    name: { type: String, },
     price: { type: Number },
-    Category: { type: String },
+    category: { type: String },
 })
 const Product = mongoose.model("Product", ProductsSchema)
 export default  Product
