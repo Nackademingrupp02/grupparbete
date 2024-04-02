@@ -17,12 +17,14 @@ async function run() {
         await mongoose.connection.db.admin().command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
         //  adding a product (document) in collection named  
-        const pro = new Products({ name: "fsss", price: 55, category: "404" })
-        console.log("\n ADDED product: ", pro);
+        // const pro = new Products({ name: "fsss", price: 55, category: "404" })
+        // console.log("\n ADDED product: ", pro);
 
-
-        await pro.save()
-
+//To save the docs
+        // await pro.save()
+//see all products
+    const seepro = await Products.find()
+    console.log(seepro);
 
     } finally {
         // Ensures that the client will close when you finish/error
