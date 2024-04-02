@@ -6,9 +6,7 @@ import Footer from './Components/Footer '
 function App() {
   return (
     <>
-      <Header />
-      <Main />
-      <Footer />
+      <div><h1>GRUPP02 HAKIM</h1></div>
     </>
   );
 }
