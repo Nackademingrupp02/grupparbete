@@ -17,7 +17,17 @@ async function run() {
         await client.db("admin").command({ ping: 1 })
 
         console.log("Pinged your deployment");
-    } finally {
+        const database = client.db("g2")
+        const collection = database.collection("Products")
+
+        const doc = { name: "Cookies", price: 55, category: "test" }
+        const res = await collection.insertOne(doc)
+        console.log(res.insertedId);
+    } catch (err) {
+        console.error(err);
+    }
+
+    finally {
         await client.close()
     }
 
