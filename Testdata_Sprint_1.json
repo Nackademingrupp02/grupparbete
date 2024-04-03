@@ -1,0 +1,102 @@
+﻿[
+    {
+        "name": "snabbmakaroner",
+        "price": 19.5,
+        "category": "skafferi"
+    },
+    {
+        "name": "pasta penne",
+        "price": 17.5,
+        "category": "skafferi"
+    },
+    {
+        "name": "kaffe mellanrost",
+        "price": 59,
+        "category": "skafferi"
+    },
+    {
+        "name": "drottningsylt",
+        "price": 39.5,
+        "category": "skafferi"
+    },
+    {
+        "name": "Bearnaise Sås",
+        "price": 26,
+        "category": "skafferi"
+    },
+    {
+        "name": "Bananer Ekologiska",
+        "price": 5.79,
+        "category": "frukt & grönt"
+    },
+    {
+        "name": "Sparris grön",
+        "price": 31.5,
+        "category": "frukt & grönt"
+    },
+    {
+        "name": "Äpple",
+        "price": 10.9,
+        "category": "frukt & grönt"
+    },
+    {
+        "name": "Fast Potatis",
+        "price": 21.95,
+        "category": "frukt & grönt"
+    },
+    {
+        "name": "Hallon Ekologiska",
+        "price": 31.95,
+        "category": "frukt & grönt"
+    },
+    {
+        "name": "Vatten Kolsyrat Jordgubb Granatäpple",
+        "price": 9.9,
+        "category": "dryck"
+    },
+    {
+        "name": "Sojadryck",
+        "price": 21.95,
+        "category": "dryck"
+    },
+    {
+        "name": "Cola Zero",
+        "price": 25.95,
+        "category": "dryck"
+    },
+    {
+        "name": "mango juice",
+        "price": 19.95,
+        "category": "dryck"
+    },
+    {
+        "name": "Defence Citrus & fläder",
+        "price": 19.95,
+        "category": "dryck"
+    },
+    {
+        "name": "Tutti Frutti Orginal",
+        "price": 19.95,
+        "category": "godis & snacks"
+    },
+    {
+        "name": "Chips Lättsaltade ",
+        "price": 26.9,
+        "category": "godis & snacks"
+    },
+    {
+        "name": "Salta pinnar",
+        "price": 24.95,
+        "category": "godis & snacks"
+    },
+    {
+        "name": "saltade chips",
+        "price": 29.95,
+        "category": "godis & snacks"
+    },
+    {
+        "name": "Gräddkola Chewy",
+        "price": 21.5,
+        "category": "godis & snacks"
+    }
+]
