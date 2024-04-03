@@ -9,8 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: ["http://localhost:3000", "http://127.0.0.1:3000"] }));
 
 app.get("/", (req, res) => {
-  // res.sendFile(path.join(__dirname, 'App.jsx' ));
-  res.sendFile(path.join('./App.jsx'))
+  res.send("Hello");
 });
 
 export default app;
