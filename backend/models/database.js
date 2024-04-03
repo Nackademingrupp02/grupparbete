@@ -1,34 +1,35 @@
-import Products from "./ProductSchema.js"
+const Product = require("./ProductSchema");
 
-
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 //get the link to connect to mongodb atlas
-const uri = "mongodb+srv://nackademing02:4ELTwXD8jQRlJGdG@g2.3ozytrh.mongodb.net/?retryWrites=true&w=majority&appName=G2";
+const uri =
+  "mongodb+srv://nackademing02:4ELTwXD8jQRlJGdG@g2.3ozytrh.mongodb.net/?retryWrites=true&w=majority&appName=G2";
 
-const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
+const clientOptions = {
+  serverApi: { version: "1", strict: true, deprecationErrors: true },
+};
 
 async function run() {
-    try {
+  try {
+    // Create a Mongoose client with a MongoClientOptions object to set the Stable API version
+    await mongoose.connect(uri, clientOptions);
 
+    await mongoose.connection.db.admin().command({ ping: 1 });
+    console.log(
+      "Pinged your deployment. You successfully connected to MongoDB!"
+    );
+    //  adding a product (document) in collection named
+    // const pro = new Products({ name: "fsss", price: 55, category: "404" })
+    // console.log("\n ADDED product: ", pro);
 
-        // Create a Mongoose client with a MongoClientOptions object to set the Stable API version
-        await mongoose.connect(uri, clientOptions);
-
-        await mongoose.connection.db.admin().command({ ping: 1 });
-        console.log("Pinged your deployment. You successfully connected to MongoDB!");
-        //  adding a product (document) in collection named  
-        // const pro = new Products({ name: "fsss", price: 55, category: "404" })
-        // console.log("\n ADDED product: ", pro);
-
-//To save the docs
-        // await pro.save()
-//see all products
-    const seepro = await Products.find()
+    //To save the docs
+    // await pro.save()
+    //see all products
+    const seepro = await Products.find();
     console.log(seepro);
-
-    } finally {
-        // Ensures that the client will close when you finish/error
-        await mongoose.disconnect();
-    }
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await mongoose.disconnect();
+  }
 }
 run().catch(console.dir);
