@@ -1,6 +1,6 @@
-import cors from "cors";
-import express from "express";
-import path from "path";
+const cors = require("cors");
+const express = require("express");
+const path = require("path");
 
 const app = express();
 app.use(express.json());
@@ -12,4 +12,4 @@ app.get("/", (req, res) => {
   res.send("Hello");
 });
 
-export default app;
+module.exports = app;
