@@ -1,4 +1,4 @@
-const Product = require("./ProductSchema");
+const Products = require("./ProductSchema");
 require("dotenv").config();
 
 const mongoose = require("mongoose");
@@ -16,12 +16,8 @@ async function run() {
       "Pinged your deployment. You successfully connected to MongoDB!"
     );
 
-    const pro = new Product({ name: "fsss", price: 55.222, category: "404" })
-    console.log("\n ADDED product: ", pro);
-
-    await pro.save()
-    const seepro = await Product.find();
-    console.log(seepro);
+    const view_products = await Products.find();
+    console.log(view_products);
   } finally {
     await mongoose.disconnect();
   }
