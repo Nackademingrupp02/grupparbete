@@ -8,6 +8,7 @@ const Main = () => {
   return (
     <>
       <main className='main'>
+      <FilterCG/>
         <h2>My Main Content</h2>
         <div>
           <ul>
