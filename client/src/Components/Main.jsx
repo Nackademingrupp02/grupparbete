@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 
 const Main = () => {
-
+//test
 
   const [products, setProducts] = useState([])
 
@@ -20,6 +20,7 @@ const Main = () => {
   return (
     <>
       <main className='main'>
+        {/* <filterCG data = { allCategory}/> */}
         <h2>My Main Content</h2>
         <div>
           <ul>
