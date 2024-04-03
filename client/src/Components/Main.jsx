@@ -7,32 +7,52 @@ const Main = () => {
 //test
 
   const [products, setProducts] = useState([])
+  const [filterButton, setFilterButton] = useState('Alla')
 
   useEffect(() => {
     const getData = async () => {
       const response = await fetch("https://grupparbete.onrender.com/products/all");
-      const json = await response.json(); 
+      const json = await response.json();
       setProducts(json);
     }
     getData();
   }, [])
-  
+
+
+
+  let filteredProducts = products.filter((product) => {
+    if(filterButton === 'Alla'){
+      return product;
+    }
+    else if(filterButton === "skafferi"){
+      return product.category === "skafferi"
+    }
+    else if(filterButton === "frukt & grönt"){
+      return product.category === "frukt & grönt"
+    }
+    else if(filterButton === "dryck"){
+      return product.category === "dryck"
+    }
+    else if(filterButton === "godis & snacks"){
+      return product.category === "godis & snacks"
+    }
+  });
+
   return (
     <>
       <main className='main'>
-        {/* <filterCG data = { allCategory}/> */}
-        <h2>My Main Content</h2>
+          <button onClick={() => {setFilterButton('Alla')}}>Alla</button>
+          <button onClick={() => {setFilterButton('godis & snacks')}}>Godis & Snacks</button>
+          <button onClick={() => {setFilterButton('dryck')}}>Dryck</button>
+          <button onClick={() => {setFilterButton('skafferi')}}>Skafferi</button>
         <div>
           <ul>
-            {products.map((product) => {
-              
+            {filteredProducts.map((product, index) => {
               return (
                 <>
-
-                  <div style={{listStyle: 'none'}}>
-                    <Product { ...{product} }  />
+                  <div style={{ listStyle: 'none' }} key={index} >
+                    <Product {...{ product }} />
                   </div>
-
                 </>
               )
             })}
