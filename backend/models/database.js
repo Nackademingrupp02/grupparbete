@@ -9,15 +9,18 @@ const uri = process.env.MONGOOSE_LIVE_URI;
 
 async function run() {
   try {
+
+    //connect to mongodb atlas
     await mongoose.connect(uri);
 
     await mongoose.connection.db;
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!"
     );
-
+// view all products
     const view_products = await Products.find();
     console.log(view_products);
+
   } finally {
     await mongoose.disconnect();
   }
