@@ -1,9 +1,9 @@
 const Product = require("./ProductSchema");
+require("dotenv").config();
 
 const mongoose = require("mongoose");
 //get the link to connect to mongodb atlas
-const uri =
-  "mongodb+srv://nackademing02:4ELTwXD8jQRlJGdG@g2.3ozytrh.mongodb.net/?retryWrites=true&w=majority&appName=G2";
+const uri = process.env.MONGOOSE_LIVE_URI;
 
 
 
