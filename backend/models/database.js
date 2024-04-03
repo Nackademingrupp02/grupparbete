@@ -5,30 +5,24 @@ const mongoose = require("mongoose");
 const uri =
   "mongodb+srv://nackademing02:4ELTwXD8jQRlJGdG@g2.3ozytrh.mongodb.net/?retryWrites=true&w=majority&appName=G2";
 
-const clientOptions = {
-  serverApi: { version: "1", strict: true, deprecationErrors: true },
-};
+
 
 async function run() {
   try {
-    // Create a Mongoose client with a MongoClientOptions object to set the Stable API version
-    await mongoose.connect(uri, clientOptions);
+    await mongoose.connect(uri);
 
-    await mongoose.connection.db.admin().command({ ping: 1 });
+    await mongoose.connection.db;
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!"
     );
-    //  adding a product (document) in collection named
-    // const pro = new Products({ name: "fsss", price: 55, category: "404" })
-    // console.log("\n ADDED product: ", pro);
 
-    //To save the docs
-    // await pro.save()
-    //see all products
-    const seepro = await Products.find();
+    const pro = new Product({ name: "fsss", price: 55.222, category: "404" })
+    console.log("\n ADDED product: ", pro);
+
+    await pro.save()
+    const seepro = await Product.find();
     console.log(seepro);
   } finally {
-    // Ensures that the client will close when you finish/error
     await mongoose.disconnect();
   }
 }
