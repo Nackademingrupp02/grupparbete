@@ -1,5 +1,5 @@
-import connectToMongoose from "./config/mongoose.js";
-import app from "./express.js";
+const connectToMongoose = require("./config/mongoose.js");
+const app = require("./express.js");
 
 const port = process.env.PORT || 8080;
 
