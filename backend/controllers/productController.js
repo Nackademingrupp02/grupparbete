@@ -13,23 +13,27 @@ async function getAllProducts() {
 
 async function addProduct(req, res) {
     try {
-        const { name, price, category } = req.body;
-
-        const product = new Products({
-            name,
-            price,
-            category
-        });
-        
-        await product.save();
-
-        res.status(201).json({ success: true, message: 'Product added successfully' });
+        const _product = req.body;
+        const product = await Products.create(_product);
+        res.status(201).json(product)
     } catch (error) {
-      console.error('Error adding product:', error);
-      res.status(500).json({ success: false, error: 'Internal Server Error' });
+        console.log(error);
     }
 }
 
+
+async function removeOneProduct(req, res) {
+    const { id } = req.params;
+    try {
+        const product = await Products.findByIdAndDelete(id);
+        if (!product) {
+            throw new Error("Cast to ObjectId");
+        }
+        res.status(204).json(); 
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 //Funktion för att lägga till data direkt från JSON. 
 async function addProductFromJSONData() {
@@ -51,4 +55,4 @@ async function addProductFromJSONData() {
     }
 }
 
-module.exports = { getAllProducts, addProduct, addProductFromJSONData };
+module.exports = { getAllProducts, addProduct, addProductFromJSONData, removeOneProduct };
