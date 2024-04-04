@@ -6,7 +6,7 @@ const app = require("./express.js");
 const port = process.env.PORT || 8000;
 
 
-app.use('/products', productRouter);
+app.use('/product', productRouter);
 
 app.listen(port, () => {
   console.log("Server is Running on port ", port);

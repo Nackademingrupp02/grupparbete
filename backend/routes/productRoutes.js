@@ -12,6 +12,10 @@ router.get('/all', async (req, res) => {
     }
 });
 
+router.post('/add', productController.addProduct);
+
+router.delete('/delete/:id', productController.removeOneProduct);
+    
 
 
 module.exports = router;
