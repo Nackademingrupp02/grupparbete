@@ -5,7 +5,7 @@ const Product = ({product}) => {
         <>
             <p>Produkt: {product.name}</p>
             <p>Kategori: {product.category}</p>
-            <p>Pris: {product.price}kr</p>
+            <p>Pris: {product.price} kr</p>
             <hr />
         </>
     )
