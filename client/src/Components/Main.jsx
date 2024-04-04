@@ -43,6 +43,7 @@ const Main = () => {
       <main className='main'>
           <button onClick={() => {setFilterButton('Alla')}}>Alla</button>
           <button onClick={() => {setFilterButton('godis & snacks')}}>Godis & Snacks</button>
+          <button onClick={() => {setFilterButton('frukt & grönt')}}>Frukt & Grönt</button>
           <button onClick={() => {setFilterButton('dryck')}}>Dryck</button>
           <button onClick={() => {setFilterButton('skafferi')}}>Skafferi</button>
         <div>
