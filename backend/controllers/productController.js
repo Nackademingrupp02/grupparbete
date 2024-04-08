@@ -21,6 +21,18 @@ async function addProduct(req, res) {
     }
 }
 
+async function getProduct(req, res) {
+    const { id } = req.params;
+    try {
+        const product = await Products.findById(id)
+        if (!product) {
+            throw new Error("Cast to ObjectId");
+        }
+        res.json(product);
+    } catch(error) {
+        productErrorHandler();
+    }
+}
 
 async function removeOneProduct(req, res) {
     const { id } = req.params;
@@ -55,4 +67,18 @@ async function addProductFromJSONData() {
     }
 }
 
-module.exports = { getAllProducts, addProduct, addProductFromJSONData, removeOneProduct };
+
+async function viewProductByCategory(req, res) {
+    const { category } = req.params;
+    try {
+        const products = await Products.find({ category: category });
+        // if (!product) {
+        //     throw new Error("No products found in")
+        // }
+        res.json(products)
+    } catch(error) {
+        productErrorHandler();
+    }
+}
+
+module.exports = { getAllProducts, addProduct, addProductFromJSONData, removeOneProduct, viewProductByCategory, getProduct };

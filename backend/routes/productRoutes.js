@@ -1,6 +1,7 @@
 const express = require('express');
 const productController = require('../controllers/productController.js')
 
+
 const router = express.Router();
 
 router.get('/all', async (req, res) => {
@@ -12,9 +13,17 @@ router.get('/all', async (req, res) => {
     }
 });
 
-router.post('/add', productController.addProduct);
+//Visa enskild produkt baserat på ID
+router.get('/id/:id', getProduct);
 
-router.delete('/delete/:id', productController.removeOneProduct);
+//Visa produkter efter Kategori
+router.get('/category/:category', viewProductByCategory);
+
+//Lägg till produkt
+router.post('/add', addProduct);
+
+//Ta bort produkt
+router.delete('/delete/:id', removeOneProduct);
     
 
 
