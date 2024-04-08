@@ -1,54 +1,27 @@
 import React from 'react'
 import Product from '../../Components/Product.jsx'
-import { useEffect } from 'react'
-import { useState } from 'react'
 
-const Main = () => {
 
-  const [products, setProducts] = useState([])
-  const [filterButton, setFilterButton] = useState('Alla')
+const Main = ({filteredProducts, filterHandler}) => {
 
-  useEffect(() => {
-    const getData = async () => {
-      const response = await fetch("https://grupparbete.onrender.com/products/all");
-      const json = await response.json();
-      setProducts(json);
-    }
-    getData();
-  }, []);
-
-  let filteredProducts = products.filter((product) => {
-    if(filterButton === 'Alla'){
-      return product;
-    }
-    else if(filterButton === "skafferi"){
-      return product.category === "skafferi"
-    }
-    else if(filterButton === "frukt & grönt"){
-      return product.category === "frukt & grönt"
-    }
-    else if(filterButton === "dryck"){
-      return product.category === "dryck"
-    }
-    else if(filterButton === "godis & snacks"){
-      return product.category === "godis & snacks"
-    }
-  });
+  function filterHandlerBtn (string) {
+    filterHandler(string)
+  }
 
   return (
     <>
       <main className='main'>
-          <button onClick={() => {setFilterButton('Alla')}}>Alla</button>
-          <button onClick={() => {setFilterButton('godis & snacks')}}>Godis & Snacks</button>
-          <button onClick={() => {setFilterButton('frukt & grönt')}}>Frukt & Grönt</button>
-          <button onClick={() => {setFilterButton('dryck')}}>Dryck</button>
-          <button onClick={() => {setFilterButton('skafferi')}}>Skafferi</button>
+          <button onClick={() => {filterHandlerBtn('Alla')}}>Alla</button>
+          <button onClick={() => {filterHandlerBtn('godis & snacks')}}>Godis & Snacks</button>
+          <button onClick={() => {filterHandlerBtn('frukt & grönt')}}>Frukt & Grönt</button>
+          <button onClick={() => {filterHandlerBtn('dryck')}}>Dryck</button>
+          <button onClick={() => {filterHandlerBtn('skafferi')}}>Skafferi</button>
         <div>
           <ul>
-            {filteredProducts.map((product, index) => {
+            {filteredProducts && filteredProducts.map((product, index) => {
               return (
                 <>
-                  <div style={{ listStyle: 'none' }} key={index} >
+                  <div key={index} >
                     <Product {...{ product }} />
                   </div>
                 </>
