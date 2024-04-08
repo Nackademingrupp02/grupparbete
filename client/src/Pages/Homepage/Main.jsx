@@ -1,10 +1,9 @@
 import React from 'react'
-import Product from './Product.jsx'
+import Product from '../../Components/Product.jsx'
 import { useEffect } from 'react'
 import { useState } from 'react'
 
 const Main = () => {
-//test
 
   const [products, setProducts] = useState([])
   const [filterButton, setFilterButton] = useState('Alla')
@@ -16,9 +15,7 @@ const Main = () => {
       setProducts(json);
     }
     getData();
-  }, [])
-
-
+  }, []);
 
   let filteredProducts = products.filter((product) => {
     if(filterButton === 'Alla'){
