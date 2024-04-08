@@ -1,10 +1,12 @@
 import React from 'react'
 import Product from '../../Components/Product.jsx'
+import SearchProducts from "../../Components/SearchProduct.jsx"
+
+
 import { useEffect } from 'react'
 import { useState } from 'react'
-
 const Main = () => {
-
+  <SearchProducts/>
   const [products, setProducts] = useState([])
   const [filterButton, setFilterButton] = useState('Alla')
 
@@ -37,6 +39,7 @@ const Main = () => {
 
   return (
     <>
+    <SearchProducts products={products}/>
       <main className='main'>
           <button onClick={() => {setFilterButton('Alla')}}>Alla</button>
           <button onClick={() => {setFilterButton('godis & snacks')}}>Godis & Snacks</button>

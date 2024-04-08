@@ -94,6 +94,20 @@ async function viewProductByCategory(req, res) {
   }
 }
 
+
+async function searchProducts(req, res) {
+  try {
+
+    const products = await Products.find();
+    res.json(products);
+
+  } catch (error) {
+    //tillfällig lösning
+    console.error(error);
+  }
+
+
+}
 module.exports = {
   getAllProducts,
   addProduct,
@@ -102,4 +116,5 @@ module.exports = {
   viewProductByCategory,
   getProduct,
   updateProduct,
+  searchProducts
 };
