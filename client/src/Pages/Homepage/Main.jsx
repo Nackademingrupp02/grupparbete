@@ -1,7 +1,7 @@
 import React from 'react'
 import Product from '../../Components/Product.jsx'
-import SearchProducts from "../../Components/SearchProduct.jsx"
 
+import SearchProducts from "../../Components/searchProduct.jsx"
 
 import { useEffect } from 'react'
 import { useState } from 'react'

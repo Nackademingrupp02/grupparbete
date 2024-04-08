@@ -98,8 +98,7 @@ async function viewProductByCategory(req, res) {
 async function searchProducts(req, res) {
   try {
 
-    const products = await Products.find();
-    res.json(products);
+    res.json("testing");
 
   } catch (error) {
     //tillfällig lösning
