@@ -1,37 +1,35 @@
-import React from 'react'
-import Product from '../../Components/Product.jsx'
+import React from 'react';
+import Product from '../../Components/Product.jsx';
+import ErrorMessage from '../../Components/NoProductError.jsx';
 
-
-const Main = ({filteredProducts, filterHandler}) => {
-
-  function filterHandlerBtn (string) {
-    filterHandler(string)
-  }
-
-  return (
-    <>
+const Main = ({ products }) => {
+  if (!Array.isArray(products)) {
+    return (
       <main className='main'>
-          <button onClick={() => {filterHandlerBtn('Alla')}}>Alla</button>
-          <button onClick={() => {filterHandlerBtn('godis & snacks')}}>Godis & Snacks</button>
-          <button onClick={() => {filterHandlerBtn('frukt & grönt')}}>Frukt & Grönt</button>
-          <button onClick={() => {filterHandlerBtn('dryck')}}>Dryck</button>
-          <button onClick={() => {filterHandlerBtn('skafferi')}}>Skafferi</button>
-        <div>
-          <ul>
-            {filteredProducts && filteredProducts.map((product, index) => {
-              return (
-                <>
-                  <div  >
-                    <Product key={index} {...{ product }} />
-                  </div>
-                </>
-              )
-            })}
-          </ul>
-        </div>
+        <ErrorMessage message="Failed to fetch products."/>
       </main>
-    </>
-  )
+    );
+  } else if (products.length === 0) {
+    return ( 
+      <main className='main'>
+        <ErrorMessage message={"No products found."}/>
+      </main>
+    );
+  } else {
+  return (
+    <main className='main'>
+      <div>
+        <ul>
+          {products.map((product, index) => (
+            <div key={index}>
+              <Product {...{ product }} />
+            </div>
+          ))}
+        </ul>
+      </div>
+    </main>
+  );
 }
+};
 
-export default Main
+export default Main;
