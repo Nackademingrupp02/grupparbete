@@ -1,12 +1,12 @@
 import React from "react";
 import Product from "../../Components/Product.jsx";
 import ErrorMessage from "../../Components/NoProductError.jsx";
-import { searchProducts } from "../../../../backend/controllers/productController.js";
+import Sp1 from "../../Components/Sp.jsx";
+
 const Main = ({ products }) => {
   if (!Array.isArray(products)) {
     return (
       <main className="main">
-        <searchProducts />
         <ErrorMessage message="Failed to fetch products." />
       </main>
     );
@@ -19,6 +19,7 @@ const Main = ({ products }) => {
   } else {
     return (
       <main className="main">
+        <Sp1 />
         <div>
           <ul>
             {products.map((product, index) => (
