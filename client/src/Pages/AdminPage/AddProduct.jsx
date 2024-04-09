@@ -4,14 +4,14 @@ import Modal from './Modal.jsx'
 
 const AddProduct = () => {
 
-  const [addProduct, setAddProduct] = useState(false);
+  const [addProductBtn, setAddProductBtn] = useState(false);
 
   return (
     <>
       <button onClick={() => {
-        setAddProduct(!addProduct)
+        setAddProductBtn(!addProductBtn)
       }}>Add product</button>
-      {addProduct && <Modal {...{setAddProduct}}/>}
+      {addProductBtn && <Modal {...{setAddProductBtn}}/>}
     </>
   )
 }
