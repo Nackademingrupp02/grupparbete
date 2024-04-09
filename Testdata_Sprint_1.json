@@ -2,101 +2,101 @@
     {
         "name": "snabbmakaroner",
         "price": 19.5,
-        "category": "skafferi"
+        "category": "661507766e4ac746c185b139"
     },
     {
         "name": "pasta penne",
         "price": 17.5,
-        "category": "skafferi"
+        "category": "661507766e4ac746c185b139"
     },
     {
         "name": "kaffe mellanrost",
         "price": 59,
-        "category": "skafferi"
+        "category": "661507766e4ac746c185b139"
     },
     {
         "name": "drottningsylt",
         "price": 39.5,
-        "category": "skafferi"
+        "category": "661507766e4ac746c185b139"
     },
     {
         "name": "Bearnaise Sås",
         "price": 26,
-        "category": "skafferi"
+        "category": "661507766e4ac746c185b139"
     },
     {
         "name": "Bananer Ekologiska",
         "price": 5.79,
-        "category": "frukt & grönt"
+        "category": "661507766e4ac746c185b13a"
     },
     {
         "name": "Sparris grön",
         "price": 31.5,
-        "category": "frukt & grönt"
+        "category": "661507766e4ac746c185b13a"
     },
     {
         "name": "Äpple",
         "price": 10.9,
-        "category": "frukt & grönt"
+        "category": "661507766e4ac746c185b13a"
     },
     {
         "name": "Fast Potatis",
         "price": 21.95,
-        "category": "frukt & grönt"
+        "category": "661507766e4ac746c185b13a"
     },
     {
         "name": "Hallon Ekologiska",
         "price": 31.95,
-        "category": "frukt & grönt"
+        "category": "661507766e4ac746c185b13a"
     },
     {
         "name": "Vatten Kolsyrat Jordgubb Granatäpple",
         "price": 9.9,
-        "category": "dryck"
+        "category": "661507766e4ac746c185b13b"
     },
     {
         "name": "Sojadryck",
         "price": 21.95,
-        "category": "dryck"
+        "category": "661507766e4ac746c185b13b"
     },
     {
         "name": "Cola Zero",
         "price": 25.95,
-        "category": "dryck"
+        "category": "661507766e4ac746c185b13b"
     },
     {
         "name": "mango juice",
         "price": 19.95,
-        "category": "dryck"
+        "category": "661507766e4ac746c185b13b"
     },
     {
         "name": "Defence Citrus & fläder",
         "price": 19.95,
-        "category": "dryck"
+        "category": "661507766e4ac746c185b13b"
     },
     {
         "name": "Tutti Frutti Orginal",
         "price": 19.95,
-        "category": "godis & snacks"
+        "category": "661507766e4ac746c185b13c"
     },
     {
         "name": "Chips Lättsaltade ",
         "price": 26.9,
-        "category": "godis & snacks"
+        "category": "661507766e4ac746c185b13c"
     },
     {
         "name": "Salta pinnar",
         "price": 24.95,
-        "category": "godis & snacks"
+        "category": "661507766e4ac746c185b13c"
     },
     {
         "name": "saltade chips",
         "price": 29.95,
-        "category": "godis & snacks"
+        "category": "661507766e4ac746c185b13c"
     },
     {
         "name": "Gräddkola Chewy",
         "price": 21.5,
-        "category": "godis & snacks"
+        "category": "661507766e4ac746c185b13c"
     }
 ]
