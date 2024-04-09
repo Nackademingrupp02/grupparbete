@@ -21,8 +21,8 @@ const Main = ({filteredProducts, filterHandler}) => {
             {filteredProducts && filteredProducts.map((product, index) => {
               return (
                 <>
-                  <div key={index} >
-                    <Product {...{ product }} />
+                  <div  >
+                    <Product key={index} {...{ product }} />
                   </div>
                 </>
               )

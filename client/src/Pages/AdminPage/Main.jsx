@@ -10,8 +10,8 @@ const Main = ({ products }) => {
                 {products && products.map((product, index) => {
                     return (
                         <>
-                            <div key={index} >
-                                <Product {...{ product }} />
+                            <div  >
+                                <Product key={index} {...{ product }} />
                             </div>
                         </>
                     )
