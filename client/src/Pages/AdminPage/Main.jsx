@@ -3,15 +3,15 @@ import Product from '../../Components/Product'
 
 
 const Main = ({ products }) => {
+    
     return (
         <>
             <main>
-                
                 {products && products.map((product, index) => {
                     return (
                         <>
-                            <div key={index} >
-                                <Product {...{ product }} />
+                            <div  >
+                                <Product key={index} {...{ product }} />
                             </div>
                         </>
                     )
