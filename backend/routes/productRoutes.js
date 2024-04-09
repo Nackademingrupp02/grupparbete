@@ -5,7 +5,7 @@ const {
   updateProduct,
   viewProductByCategory,
   getProduct,
-  getAllProducts
+  getAllProducts,
 } = require("../controllers/productController.js");
 
 const router = express.Router();
@@ -14,10 +14,10 @@ const router = express.Router();
 router.get("/all", getAllProducts);
 
 //Visa enskild produkt baserat på ID
-router.get('/id/:id', getProduct);
+router.get("/id/:id", getProduct);
 
 //Visa produkter efter Kategori
-router.get('/category/:category', viewProductByCategory);
+router.get("/category/:category", viewProductByCategory);
 
 //Lägg till produkt
 router.post("/add", addProduct);
