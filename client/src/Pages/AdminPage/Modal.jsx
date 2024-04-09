@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import CategoryOption from './CategoryOption';
-const baseURL = "http://localhost:8080"
+const baseURL = "https://grupparbete.onrender.com"
 
 const Modal = ({ setAddProductBtn, categoryList }) => {
 
