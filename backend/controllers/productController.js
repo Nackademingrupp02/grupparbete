@@ -1,4 +1,5 @@
 const Products = require("../models/ProductSchema.js");
+const Categorys = require("../models/CategorySchema.js");
 const jsonData = require("../../Testdata_Sprint_1.json");
 const { productErrorHandler } = require("../util/apiHelpers.js");
 
@@ -59,7 +60,7 @@ async function getProduct(req, res) {
     }
     res.json(product);
   } catch (error) {
-    productErrorHandler();
+    productErrorHandler(error, res);
   }
 }
 
@@ -86,11 +87,24 @@ async function addProductFromJSONData() {
 async function viewProductByCategory(req, res) {
   const { category } = req.params;
   try {
-    const products = await Products.find({ category: category });
+    // Find the category object based on its name
+    const categoryObject = await Categorys.findOne({ name: category });
+    if (!categoryObject) {
+      return res.status(404).json({ message: "Category not found" });
+    }
 
+    // Find products belonging to the specified category
+    const products = await Products.find({ category: categoryObject._id });
+    if (!products || products.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No products found for this category" });
+    }
+
+    // Respond with the products
     res.json(products);
   } catch (error) {
-    productErrorHandler();
+    productErrorHandler(error, res);
   }
 }
 
