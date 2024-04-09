@@ -1,23 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Modal = ({setAddProduct}) => {
+const Modal = ({ setAddProductBtn }) => {
+
+  const [addProduct, setAddProduct] = useState({
+    name: "",
+    price: "",
+    category: ""
+  });
+
+  const handleAddProduct = async (e) => {
+    e.preventDefault();
+
+  }
+
   return (
     <>
-        <div className="modal">
+      <div className="modal">
         <div className='overlay'>
           <div className='modal-content'>
             <h3>Add product</h3>
-            <div className='addProductInputs'>
-            <label htmlFor="">Name</label>
-            <input type="text" name="" id="name" />
-            <label htmlFor="">Category</label>
-            <input type="text" name="" id="category" />
-            <label htmlFor="">Price</label>
-            <input type="text" name="" id="price" />
-            </div>
-            <button onClick={() => {
-              setAddProduct(false)
-            }}>Close</button>
+            <form action="">
+              <div className='addProductInputs'>
+                <label htmlFor="addProductName">Name</label>
+                <input type="text" id="addProductName" />
+                <label htmlFor="addProductCategory">Category</label>
+                <input type="text" id="addProductCategory" />
+                <label htmlFor="addProductPrice">Price</label>
+                <input type="text" id="addProductPrice" />
+              </div>
+              <button onSubmit={handleAddProduct}>
+                Add product
+              </button>
+              <button onClick={() => {
+                setAddProductBtn(false)
+              }}>Close</button>
+            </form>
           </div>
         </div>
       </div>
