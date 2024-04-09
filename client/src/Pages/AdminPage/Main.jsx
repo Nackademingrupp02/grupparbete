@@ -3,10 +3,10 @@ import Product from '../../Components/Product'
 
 
 const Main = ({ products }) => {
+    
     return (
         <>
             <main>
-                
                 {products && products.map((product, index) => {
                     return (
                         <>

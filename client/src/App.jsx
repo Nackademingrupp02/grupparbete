@@ -9,7 +9,8 @@ import { useEffect, useState } from 'react'
 function App() {
   const [categories, setCategories] = useState([]);
   const [filterButton, setFilterButton] = useState('Alla');
-  const products = useProductFetcher(filterButton);
+  const [products, setProducts] = useState([])
+  const filterProducts = useProductFetcher(filterButton);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -31,13 +32,22 @@ function App() {
     setFilterButton(string)
   }
 
+  useEffect(() => {
+    const getData = async () => {
+      const response = await fetch("https://grupparbete.onrender.com/product/all");
+      const json = await response.json();
+      setProducts(json);
+    }
+    getData();
+  }, []);
+
   return (
     <>
       <Routes>
-        <Route path="/" element={<HomePage products={products} categories={categories} filterHandler={filterHandler} />} />
-        <Route path="/adminpage" element={<AdminPage products={products} />} />
-        <Route path="kategori/:category" element={<HomePage products={products} categories={categories} filterHandler={filterHandler} />} />
-        <Route path="/produkter/alla" element={<HomePage products={products} categories={categories} filterHandler={() => filterHandler('Alla')} />} />
+        <Route path="/" element={<HomePage {...{filterHandler, categories, filterProducts}} />} />
+        <Route path={'/adminpage'} element={<AdminPage {...{products}}/>} />
+        <Route path="kategori/:category" element={<HomePage {...{filterHandler, categories, filterProducts}}/>} />
+        <Route path="/produkter/alla" element={<HomePage filterProducts={filterProducts} categories={categories} filterHandler={() => filterHandler('Alla')} />} />
       </Routes>
     </>
   );
