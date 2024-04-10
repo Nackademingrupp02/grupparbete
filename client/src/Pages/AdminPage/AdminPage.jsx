@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Header from './HeaderAdmin.jsx'
 import Main from './MainAdmin.jsx'
-
+import axios from 'axios'
+const baseURL = "https://grupparbete.onrender.com"
 
 const AdminPage = ({ categories }) => {
 
@@ -30,6 +31,7 @@ const AdminPage = ({ categories }) => {
     }
     
   }
+  
 
   useEffect(() => {
     const getData = async () => {
@@ -43,7 +45,7 @@ const AdminPage = ({ categories }) => {
   return (
     <>
         <Header {...{addProduct, setAddProduct, handleAddProduct}} />
-        <Main {...{ products, categories, }} />
+        <Main {...{ products, categories }} />
     </>
   )
 }

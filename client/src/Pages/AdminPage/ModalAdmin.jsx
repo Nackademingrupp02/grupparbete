@@ -1,11 +1,10 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import CategoryOption from './CategoryOption';
-const baseURL = "https://grupparbete.onrender.com"
+
 
 const ModalAdmin = ({ setAddProductBtn, categoryList, addProduct, setAddProduct, handleAddProduct}) => {
  
-
+  
   //useEffect för att undvika problemet med att addProduct.category är tom sträng om man inte ändrar i dropdown fönstret först
   useEffect(() => {
     if (!addProduct.category && categoryList) {
@@ -19,7 +18,7 @@ const ModalAdmin = ({ setAddProductBtn, categoryList, addProduct, setAddProduct,
         <div className='overlay'>
           <div className='modal-content'>
             <h3>Add product</h3>
-            <form onSubmit={()=> {handleAddProduct}}>
+            <form onSubmit={handleAddProduct}>
               <div className='addProductInputs'>
                 <label htmlFor="addProductName">Name</label>
                 <input type="text" id="addProductName" value={addProduct.value} onChange={(e) => {
