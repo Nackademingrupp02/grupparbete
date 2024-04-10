@@ -1,7 +1,7 @@
 import React from "react";
 import Product from "../../Components/Product.jsx";
 import ErrorMessage from "../../Components/NoProductError.jsx";
-
+import Sp1 from "../../Components/Sp.jsx";
 const Main = ({ products }) => {
   if (!Array.isArray(products)) {
     return (

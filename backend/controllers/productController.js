@@ -118,7 +118,7 @@ async function searchProducts(req, res) {
     res.json(searchProductFilter)
 
   } catch (error) {
-    //tillfällig lösning
+    res.send("ERROR")
     console.error(error);
   }
 
