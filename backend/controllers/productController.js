@@ -115,7 +115,7 @@ async function searchProducts(req, res) {
     console.log("Search product: ",search);
     const searchProductFilter = await Products({name: search})
 
-    res.send(searchProductFilter)
+    res.json(searchProductFilter)
 
   } catch (error) {
     //tillfällig lösning
