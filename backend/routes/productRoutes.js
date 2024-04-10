@@ -1,4 +1,8 @@
+
+
 const express = require("express");
+
+
 const {
   addProduct,
   removeProduct,
@@ -8,9 +12,10 @@ const {
   getAllProducts,
   searchProducts
 } = require("../controllers/productController.js");
-
+router.use()
 const router = express.Router();
-
+router.use(express.urlencoded())
+router.use(express.json())
 //Visa alla produkter
 router.get("/all", getAllProducts);
 
@@ -29,6 +34,9 @@ router.delete("/delete/:id", removeProduct);
 //Redigera produkt
 router.put("/update/:id", updateProduct);
 
-router.post("/search", searchProducts)
+router.get("/search", (req,res)=>{
+  const searchName = req.query.searchName
+  res.json(searchName)
+})
 
 module.exports = router;
