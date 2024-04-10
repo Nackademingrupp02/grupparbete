@@ -17,7 +17,9 @@ const Main = ({ products }) => {
     );
   } else {
     return (
+      
       <main className="main">
+        <Sp1/>
         <div className="products">
           {products.map((product, index) => (
             <div key={index} className="product">

@@ -29,8 +29,6 @@ router.delete("/delete/:id", removeProduct);
 //Redigera produkt
 router.put("/update/:id", updateProduct);
 
-router.get("/search", (req,res)=>{
-  res.send("test")
-})
+router.get("/search", searchProducts)
 
 module.exports = router;

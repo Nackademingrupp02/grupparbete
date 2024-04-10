@@ -111,8 +111,11 @@ async function viewProductByCategory(req, res) {
 
 async function searchProducts(req, res) {
   try {
+    const {search} = req.body
+    console.log("Search product: ",search);
+    const searchProductFilter = await Products({name: search})
 
-    res.json("testing");
+    res.json(searchProductFilter)
 
   } catch (error) {
     //tillfällig lösning
