@@ -3,7 +3,7 @@ import React from "react";
 const Sp1 = () => {
   return (
     <>
-      <form action="/search" method="get">
+      <form action="/search" method="POST">
         <label for="search">Lägg till produkt</label>
         <input type="text" id="search" name="search" placeholder="Fungerar ej"/>
         <input type="submit" value={"Sök"} />
