@@ -37,17 +37,13 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<HomePage {...{filterHandler, categories, filterProducts}} />} />
-        <Route path={'/adminpage'} element={<AdminPage {...{ categories }}/>} />
-        <Route path="kategori/:category" element={<HomePage {...{filterHandler, categories, filterProducts}}/>} />
-        <Route path="/produkter/alla" element={<HomePage filterProducts={filterProducts} categories={categories} filterHandler={() => filterHandler('Alla')} />} />
         <Route
           path="/"
           element={
             <HomePage {...{ filterHandler, categories, filterProducts }} />
           }
         />
-        <Route path={"/adminpage"} element={<AdminPage {...{ products }} />} />
+        <Route path={"/adminpage"} element={<AdminPage {...{ categories }} />} />
         <Route
           path="/kategori/:category"
           element={
