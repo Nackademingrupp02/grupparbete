@@ -1,35 +1,11 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import CategoryOption from './CategoryOption';
-const baseURL = "https://grupparbete.onrender.com"
 
-const Modal = ({ setAddProductBtn, categoryList }) => {
 
-  const [addProduct, setAddProduct] = useState({
-    name: "",
-    price: "",
-    category: ""
-  });
-
-  const handleAddProduct = async (e) => {
-    e.preventDefault(); console.log(addProduct);
-
-    try {
-      const response = await axios.post(baseURL + "/product/add",
-        JSON.stringify(addProduct),
-        { headers: { "Content-type": "application/json" } }
-      )
-      if(response.status === 201){
-        console.log("Product added.");
-      }
-    }
-    catch (err) {
-      console.log("Error handling form: ");
-      console.error(err.message);
-    }
-  }
-
-  //useEffect för att undvika problemet med att addProduct.category är tom sträng om man inte ändrar på dropdown fönstret
+const ModalAdmin = ({ setAddProductBtn, categoryList, addProduct, setAddProduct, handleAddProduct}) => {
+ 
+  
+  //useEffect för att undvika problemet med att addProduct.category är tom sträng om man inte ändrar i dropdown fönstret först
   useEffect(() => {
     if (!addProduct.category && categoryList) {
       setAddProduct({ ...addProduct, category: categoryList[0]._id })
@@ -77,4 +53,4 @@ const Modal = ({ setAddProductBtn, categoryList }) => {
   )
 }
 
-export default Modal
+export default ModalAdmin
