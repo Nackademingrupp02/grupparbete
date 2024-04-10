@@ -1,4 +1,5 @@
 const Categorys = require("../models/CategorySchema");
+const { categoryErrorHandler } = require("../util/apiHelpers");
 
 async function getAllCategorys(req, res) {
   try {
