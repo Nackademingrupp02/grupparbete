@@ -39,8 +39,8 @@ router.delete("/delete/:id", removeProduct);
 //Redigera produkt
 router.put("/update/:id", updateProduct);
 
-router.get("/product/search",(req,res)=> res.send("you got the get"))
-router.post("http://localhost:5173/product/search", searchProducts)
+router.get("/search",(req,res)=> res.send("you got the get"))
+router.post("/search", searchProducts)
 
 
 
