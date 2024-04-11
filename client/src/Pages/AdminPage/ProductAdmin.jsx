@@ -11,15 +11,11 @@ const ProductAdmin = ({ product, categories }) => {
   const editProduct = async () => {
     try {
       const response = await axios.put(baseURL + '/product/update/' + product._id, editedProduct);
-      // Handle successful update response
-
-      // Set isEditing to false to hide edit fields after saving
       setIsEditing(false);
       window.location.reload();
       alert(`${product.name} was successfully updated`);
 
     } catch (error) {
-      // Handle error
       console.error("Error updating product:", error);
     }
   }
