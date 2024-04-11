@@ -105,3 +105,8 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
 }
+.adminProduct{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

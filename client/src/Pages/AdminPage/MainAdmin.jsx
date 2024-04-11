@@ -1,19 +1,17 @@
 import React from 'react'
-import Product from '../../Components/Product'
+import Product from './ProductAdmin'
 
 
-const Main = ({ products }) => {
+const MainAdmin = ({ products, categories}) => {
     
     return (
         <>
             <main>
                 {products && products.map((product, index) => {
                     return (
-                        <>
-                            <div  >
-                                <Product key={index} {...{ product }} />
+                            <div key={index}>
+                                <Product key={index} {...{ product, categories }} />
                             </div>
-                        </>
                     )
                 })}
             </main>
@@ -21,4 +19,4 @@ const Main = ({ products }) => {
     )
 }
 
-export default Main
+export default MainAdmin

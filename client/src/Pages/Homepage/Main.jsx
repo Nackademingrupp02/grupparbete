@@ -1,7 +1,7 @@
 import React from "react";
 import Product from "../../Components/Product.jsx";
 import ErrorMessage from "../../Components/NoProductError.jsx";
-
+import Sp1 from "../../Components/Sp.jsx";
 const Main = ({ products }) => {
   if (!Array.isArray(products)) {
     return (
@@ -17,7 +17,9 @@ const Main = ({ products }) => {
     );
   } else {
     return (
+      
       <main className="main">
+        <Sp1/>
         <div className="products">
           {products.map((product, index) => (
             <div key={index} className="product">
