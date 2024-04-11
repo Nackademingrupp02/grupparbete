@@ -9,11 +9,9 @@ const MainAdmin = ({ products, categories}) => {
             <main>
                 {products && products.map((product, index) => {
                     return (
-                        <>
-                            <div>
+                            <div key={index}>
                                 <Product key={index} {...{ product, categories }} />
                             </div>
-                        </>
                     )
                 })}
             </main>
