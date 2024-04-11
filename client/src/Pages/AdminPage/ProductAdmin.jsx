@@ -57,7 +57,7 @@ const ProductAdmin = ({ product, categories }) => {
                 <option key={category._id} value={category._id}>{category.name}</option>
               ))}
             </select> : getCategoryName()}</p>
-          <p>Pris: {isEditing ? <input type="text" name="price" value={editedProduct.price} onChange={handleInputChange} /> : `${product.price} kr`}</p>
+          <p>Pris: {isEditing ? <input type="number" name="price" value={editedProduct.price} onChange={handleInputChange} /> : `${product.price} kr`}</p>
         </div>
         <div>
           {isEditing ? (
