@@ -111,12 +111,20 @@ async function viewProductByCategory(req, res) {
 
 async function searchProducts(req, res) {
   try {
-    const {search} = req.body
-    console.log("Search product: ",search);
-    const searchProductFilter = await Products({name: search})
+    
+      const searchName = req.query.searchName
+      if (!searchName) {
 
-    res.json(searchProductFilter)
+        return res.status(404).send("search query not find")
+      }
+      console.log("Search product: ", searchName);
+      const searchProductFilter = await Products.find({ name: searchName })
+      if (!searchProductFilter) {
+        return res.status(404).send("product not found")
+      }
 
+      res.json(searchProductFilter)
+    
   } catch (error) {
     res.send("ERROR")
     console.error(error);

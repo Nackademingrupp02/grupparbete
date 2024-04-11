@@ -15,8 +15,10 @@ const {
 
 
 const router = express.Router();
-router.use(express.urlencoded())
-router.use(express.json())
+const bodyparser = require("body-parser")
+router.use(bodyparser.urlencoded({ extended: true }));
+
+router.use(bodyparser.json())
 
 
 //Visa alla produkter
@@ -37,11 +39,9 @@ router.delete("/delete/:id", removeProduct);
 //Redigera produkt
 router.put("/update/:id", updateProduct);
 
-router.post("/search", (req,res)=>{
+router.get("/product/search",(req,res)=> res.send("you got the get"))
+router.post("http://localhost:5173/product/search", searchProducts)
 
-  
-  const searchName = req.query.searchName
-  res.send(searchName)
-})
+
 
 module.exports = router;
