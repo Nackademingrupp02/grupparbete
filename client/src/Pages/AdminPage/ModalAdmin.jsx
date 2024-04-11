@@ -18,7 +18,9 @@ const ModalAdmin = ({ setAddProductBtn, categoryList, addProduct, setAddProduct,
         <div className='overlay'>
           <div className='modal-content'>
             <h3>Add product</h3>
-            <form onSubmit={handleAddProduct}>
+            {/* <form onSubmit={() => {
+              handleAddProduct()
+              }}> */}
               <div className='addProductInputs'>
                 <label htmlFor="addProductName">Name</label>
                 <input type="text" id="addProductName" value={addProduct.value} onChange={(e) => {
@@ -39,13 +41,13 @@ const ModalAdmin = ({ setAddProductBtn, categoryList, addProduct, setAddProduct,
                   setAddProduct({ ...addProduct, price: e.target.value })
                 }} />
               </div>
-              <button type='submit'>
+              <button onClick={ () => { handleAddProduct()}}>
                 Add product
               </button>
               <button onClick={() => {
                 setAddProductBtn(false)
               }}>Close</button>
-            </form>
+            {/* </form> */}
           </div>
         </div>
       </div>
