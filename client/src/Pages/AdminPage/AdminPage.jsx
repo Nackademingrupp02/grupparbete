@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import Header from './HeaderAdmin.jsx'
+import HeaderAdmin from './HeaderAdmin.jsx'
+import Header from '../Homepage/Header.jsx'
 import Main from './MainAdmin.jsx'
 import axios from 'axios'
 const baseURL = "https://grupparbete.onrender.com"
@@ -44,7 +45,8 @@ const AdminPage = ({ categories }) => {
 
   return (
     <>
-        <Header {...{addProduct, setAddProduct, handleAddProduct}} />
+    <Header/>
+        <HeaderAdmin {...{addProduct, setAddProduct, handleAddProduct}} />
         <Main {...{ products, categories }} />
     </>
   )
