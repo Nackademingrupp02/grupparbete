@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import Modal from './Modal.jsx'
+import Modal from './ModalAdmin.jsx'
 
-const AddProduct = () => {
+const AddProduct = ({addProduct, setAddProduct, handleAddProduct}) => {
 
   const [addProductBtn, setAddProductBtn] = useState(false);
   const [categoryList, setCategoryList] = useState([])
@@ -21,7 +21,7 @@ const AddProduct = () => {
       <button onClick={() => {
         setAddProductBtn(!addProductBtn)
       }}>Add product</button>
-      {addProductBtn && <Modal {...{setAddProductBtn, categoryList}}/>}
+      {addProductBtn && <Modal {...{setAddProductBtn, categoryList, addProduct, setAddProduct, handleAddProduct}}/>}
     </>
   )
 }

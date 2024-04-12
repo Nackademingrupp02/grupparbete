@@ -1,4 +1,8 @@
+
+
 const express = require("express");
+
+
 const {
   addProduct,
   removeProduct,
@@ -9,7 +13,13 @@ const {
   searchProducts
 } = require("../controllers/productController.js");
 
+
 const router = express.Router();
+const bodyparser = require("body-parser")
+router.use(bodyparser.urlencoded({ extended: true }));
+
+router.use(bodyparser.json())
+
 
 //Visa alla produkter
 router.get("/all", getAllProducts);
@@ -29,8 +39,9 @@ router.delete("/delete/:id", removeProduct);
 //Redigera produkt
 router.put("/update/:id", updateProduct);
 
-router.get("/search", (req,res)=>{
-  res.send("test")
-})
+router.get("/search",(req,res)=> res.send("you got the get"))
+router.post("/search", searchProducts)
+
+
 
 module.exports = router;
