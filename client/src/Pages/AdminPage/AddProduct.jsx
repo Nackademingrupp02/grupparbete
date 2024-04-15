@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import Modal from './ModalAdmin.jsx'
+import ModalAdmin from './ModalAdmin.jsx'
 
 const AddProduct = ({addProduct, setAddProduct, handleAddProduct}) => {
 
@@ -21,7 +21,7 @@ const AddProduct = ({addProduct, setAddProduct, handleAddProduct}) => {
       <button onClick={() => {
         setAddProductBtn(!addProductBtn)
       }}>Add product</button>
-      {addProductBtn && <Modal {...{setAddProductBtn, categoryList, addProduct, setAddProduct, handleAddProduct}}/>}
+      {addProductBtn && <ModalAdmin {...{setAddProductBtn, categoryList, addProduct, setAddProduct, handleAddProduct}}/>}
     </>
   )
 }
