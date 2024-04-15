@@ -1,4 +1,5 @@
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import HomePage from "./Pages/Homepage/HomePage";
 import AdminPage from "./Pages/AdminPage/AdminPage";
 import useProductFetcher from "./Components/ProductFilter";
@@ -7,7 +8,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [categories, setCategories] = useState([]);
-  const [filterButton, setFilterButton] = useState('Alla');
+  const [filterButton, setFilterButton] = useState("Alla");
   const filterProducts = useProductFetcher(filterButton);
 
   useEffect(() => {
@@ -32,8 +33,6 @@ function App() {
     setFilterButton(string);
   }
 
-
-
   return (
     <>
       <Routes>
@@ -43,7 +42,10 @@ function App() {
             <HomePage {...{ filterHandler, categories, filterProducts }} />
           }
         />
-        <Route path={"/adminpage"} element={<AdminPage {...{ categories }} />} />
+        <Route
+          path={"/adminpage"}
+          element={<AdminPage {...{ categories }} />}
+        />
         <Route
           path="/kategori/:category"
           element={
