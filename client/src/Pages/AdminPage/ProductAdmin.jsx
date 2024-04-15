@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 const baseURL = "https://grupparbete.onrender.com";
 
 const ProductAdmin = ({ product, categories }) => {
@@ -49,7 +50,34 @@ const ProductAdmin = ({ product, categories }) => {
 
   return (
     <>
-      <div className='adminProduct'>
+
+      <Card style={{ width: '18rem' }}>
+        <Card.Img variant="top" src="holder.js/100px180" />
+        <Card.Body>
+          <Card.Title>
+            <p>{isEditing ? <input type="text" name="name" value={editedProduct.name} onChange={handleInputChange} /> : product.name}</p>
+          </Card.Title>
+          <Card.Text>
+            <p>Kategori: {isEditing ? <select name="category" value={editedProduct.category} onChange={handleInputChange}>
+              {categories.map(category => (
+                <option key={category._id} value={category._id}>{category.name}</option>
+              ))}
+            </select> : getCategoryName()}</p>
+            <p>Pris: {isEditing ? <input type="number" name="price" value={editedProduct.price} onChange={handleInputChange} /> : `${product.price} kr`}</p>
+            <div>
+              {isEditing ? (
+                <button onClick={editProduct}>Spara</button>
+              ) : (
+                <button onClick={() => setIsEditing(true)}>Redigera</button>
+              )}
+              <button onClick={deleteProduct}>Delete</button>
+              {isDeleted && <p style={{ color: 'green' }}>{product.name} has been deleted.</p>}
+            </div>
+          </Card.Text>
+          <Button variant="primary">Go somewhere</Button>
+        </Card.Body>
+      </Card>
+      {/* <div className='adminProduct'>
         <div>
           <p>Produkt: {isEditing ? <input type="text" name="name" value={editedProduct.name} onChange={handleInputChange} /> : product.name}</p>
           <p>Kategori: {isEditing ? <select name="category" value={editedProduct.category} onChange={handleInputChange}>
@@ -69,7 +97,7 @@ const ProductAdmin = ({ product, categories }) => {
           {isDeleted && <p style={{ color: 'green' }}>{product.name} has been deleted.</p>}
         </div>
       </div>
-      <hr />
+      <hr /> */}
     </>
   )
 }

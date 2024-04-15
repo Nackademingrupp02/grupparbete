@@ -1,5 +1,6 @@
 import React from 'react'
-import Product from './ProductAdmin'
+import ProductAdmin from './ProductAdmin'
+
 
 
 const MainAdmin = ({ products, categories}) => {
@@ -10,7 +11,7 @@ const MainAdmin = ({ products, categories}) => {
                 {products && products.map((product, index) => {
                     return (
                             <div key={index}>
-                                <Product key={index} {...{ product, categories }} />
+                                <ProductAdmin key={index} {...{ product, categories }} />
                             </div>
                     )
                 })}
