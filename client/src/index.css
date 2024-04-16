@@ -93,10 +93,10 @@ button:focus-visible {
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1.4;
-  background: #c5c5c5;
+  background: white;
   padding: 14px 28px;
   border-radius: 3px;
-  max-width: 600px;
+  max-width:800px;
   min-width: 300px;
   color: black
 }
