@@ -18,7 +18,7 @@ const Product = ({ product }) => {
     return (
       <Modal
         {...props}
-        size="xl"
+        size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
@@ -69,11 +69,17 @@ const Product = ({ product }) => {
     <>
       <Container>
         <Row>
-          <Card style={{ width: "18rem" }} onClick={handleModal}>
+          <Card style={{ width: "18rem" }}>
             <Card.Img
+              onClick={handleModal}
               variant="top"
-              src="https://cdn.starwebserver.se/shops/testbutik1503/files/ma1010804-bulgur-500g-ekologiskt-urtekram-matgryn-kolonialvaror.png "
-              style={{ width: "20rem", height: "30rem", objectFit: "cover" }}
+              src={product.picture}
+              style={{
+                width: "15rem",
+                maxWidth: "15rem",
+                height: "20rem",
+                objectFit: "scale-down",
+              }}
             />
             <Card.Body>
               <Card.Title>{product.name}</Card.Title>
