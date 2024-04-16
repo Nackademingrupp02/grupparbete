@@ -15,7 +15,35 @@ const ProductsSchema = new mongoose.Schema({
     min: 1,
     max: 100000,
     required: true,
-    match: /^(?:0\.[0-9]{1,2}|[1-9]{1}[0-9]*(\.[0-9]{1,2})?|0)$/,
+    match: /^(\d+(?:,\d{1,2})?).*/,
+  },
+  packageSize: {
+    type: String,
+    required: true,
+    match: /[a-zA-Z0-9\s]+[a-zA-Z0-9]+/,
+  },
+  comparePrice: {
+    type: Number,
+    required: true,
+    match: /^(\d+(?:,\d{1,2})?).*/,
+  },
+  brand: {
+    type: String,
+    required: true,
+    match: /[a-zA-Z0-9\s]+[a-zA-Z0-9]+/,
+  },
+  description: {
+    type: String,
+    minlength: 10,
+    maxLength: 200,
+    match: /[a-zA-Z0-9\s]+[a-zA-Z0-9]+/,
+  },
+  ingredients: {
+    type: String,
+    match: /[a-zA-Z\s]+[a-zA-Z]+/,
+  },
+  picture: {
+    type: String,
   },
   category: {
     type: mongoose.Types.ObjectId,

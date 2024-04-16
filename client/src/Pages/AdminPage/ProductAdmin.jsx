@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Table from 'react-bootstrap/Table';
+import { FaTrashAlt } from 'react-icons/fa'
+import { FaPen } from "react-icons/fa";
 
 const baseURL = "https://grupparbete.onrender.com";
 
-const ProductAdmin = ({ product, categories }) => {
+const ProductAdmin = ({ product, categories, index }) => {
   const [isDeleted, setIsDeleted] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editedProduct, setEditedProduct] = useState({ ...product });
@@ -47,29 +50,31 @@ const ProductAdmin = ({ product, categories }) => {
     }));
   }
 
+  //Fixa bootstrap table
+
   return (
     <>
-      <div className='adminProduct'>
-        <div>
-          <p>Produkt: {isEditing ? <input type="text" name="name" value={editedProduct.name} onChange={handleInputChange} /> : product.name}</p>
-          <p>Kategori: {isEditing ? <select name="category" value={editedProduct.category} onChange={handleInputChange}>
-              {categories.map(category => (
-                <option key={category._id} value={category._id}>{category.name}</option>
-              ))}
-            </select> : getCategoryName()}</p>
-          <p>Pris: {isEditing ? <input type="number" name="price" value={editedProduct.price} onChange={handleInputChange} /> : `${product.price} kr`}</p>
-        </div>
-        <div>
-          {isEditing ? (
-            <button onClick={editProduct}>Spara</button>
-          ) : (
-            <button onClick={() => setIsEditing(true)}>Redigera</button>
-          )}
-          <button onClick={deleteProduct}>Delete</button>
-          {isDeleted && <p style={{ color: 'green' }}>{product.name} has been deleted.</p>}
-        </div>
-      </div>
-      <hr />
+      <tbody>
+        <tr>
+          <td>{index + 1}</td>
+          <td>{isEditing ? <input type="text" name="name" value={editedProduct.name} onChange={handleInputChange} /> : product.name}</td>
+          <td>{isEditing ? <select name="category" value={editedProduct.category} onChange={handleInputChange}>
+            {categories.map(category => (
+              <option key={category._id} value={category._id}>{category.name}</option>
+            ))}
+          </select> : getCategoryName()}</td>
+          <td>{isEditing ? <input type="number" name="price" value={editedProduct.price} onChange={handleInputChange} /> : `${product.price} kr`}</td>
+          <div>
+            {isEditing ? (
+              <button onClick={editProduct}>Spara</button>
+            ) : (
+              <button onClick={() => setIsEditing(true)}><FaPen /></button>
+            )}
+            <button onClick={deleteProduct}><FaTrashAlt /></button>
+            {isDeleted && <p style={{ color: 'green' }}>{product.name} has been deleted.</p>}
+          </div>
+        </tr>
+      </tbody>
     </>
   )
 }
