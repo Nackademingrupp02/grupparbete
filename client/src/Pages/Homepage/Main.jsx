@@ -1,7 +1,7 @@
 import React from "react";
 import Product from "../../Components/Product.jsx";
 import ErrorMessage from "../../Components/NoProductError.jsx";
-import Sp1 from "../../Components/Sp.jsx";
+import { Container, Row, Col } from "react-bootstrap";
 const Main = ({ products }) => {
   if (!Array.isArray(products)) {
     return (
@@ -17,28 +17,28 @@ const Main = ({ products }) => {
     );
   } else {
     return (
-      
       <main className="main">
-        <Sp1/>
-        <div className="products">
-          {products.map((product, index) => (
-            <div key={index} className="product">
-              <Product
-                {...{
-                  product: {
-                    ...product,
-                    name:
-                      product.name.charAt(0).toUpperCase() +
-                      product.name.slice(1),
-                    category:
-                      product.category.charAt(0).toUpperCase() +
-                      product.category.slice(1),
-                  },
-                }}
-              />
-            </div>
-          ))}
-        </div>
+        <Container className="products">
+          <Row>
+            {products.map((product, index) => (
+              <Col md={4} key={index} className="product mt-4 mb-4">
+                <Product
+                  {...{
+                    product: {
+                      ...product,
+                      name:
+                        product.name.charAt(0).toUpperCase() +
+                        product.name.slice(1),
+                      category:
+                        product.category.charAt(0).toUpperCase() +
+                        product.category.slice(1),
+                    },
+                  }}
+                />
+              </Col>
+            ))}
+          </Row>
+        </Container>
       </main>
     );
   }
