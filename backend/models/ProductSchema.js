@@ -23,9 +23,9 @@ const ProductsSchema = new mongoose.Schema({
     match: /[a-zA-Z0-9\s]+[a-zA-Z0-9]+/,
   },
   comparePrice: {
-    type: Number,
+    type: String,
     required: true,
-    match: /^(\d+(?:,\d{1,2})?).*/,
+    match: /[a-zA-Z0-9\s]+[a-zA-Z0-9]+/,
   },
   brand: {
     type: String,
