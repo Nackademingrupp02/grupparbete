@@ -76,6 +76,7 @@ const Product = ({ product }) => {
               src={product.picture}
               style={{
                 width: "15rem",
+                maxWidth: "15rem",
                 height: "20rem",
                 objectFit: "scale-down",
               }}
