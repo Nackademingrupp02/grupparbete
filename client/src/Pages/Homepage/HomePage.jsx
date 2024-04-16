@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { Button, Stack, Container, Row, Col } from "react-bootstrap";
 import Header from "./Header.jsx";
 import Main from "./Main.jsx";
 import Footer from "./Footer.jsx";
 import useProductFetcher from "../../Components/ProductFilter";
 import { useNavigate, useParams } from "react-router-dom";
+import PaginationFunction from "../../Components/Pagination.jsx";
 
 const HomePage = ({ categories }) => {
   const navigate = useNavigate();
@@ -11,6 +13,8 @@ const HomePage = ({ categories }) => {
   const { category } = params;
   const [filterButton, setFilterButton] = useState("Alla");
   const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(30);
 
   const { products: filteredProducts } = useProductFetcher(
     filterButton,
@@ -42,6 +46,10 @@ const HomePage = ({ categories }) => {
     }
   }
 
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = filteredProducts.slice(firstPostIndex, lastPostIndex);
+
   function filterHandler(string) {
     setFilterButton(string);
     if (string === "Alla") {
@@ -54,15 +62,43 @@ const HomePage = ({ categories }) => {
   return (
     <>
       <Header />
-      <div className="category-buttons">
-        <button onClick={() => filterHandler("Alla")}>Alla Produkter</button>
-        {categories.map((category, index) => (
-          <button key={index} onClick={() => filterHandler(category.name)}>
-            {category.name.charAt(0).toUpperCase() + category.name.slice(1)}
-          </button>
-        ))}
-      </div>
-      <Main products={filteredProducts} />
+      <Container>
+        <Row>
+          <Col className="col-3 w-25" style={{ minWidth: "25vh" }}>
+            <Stack className="category-buttons">
+              <Button
+                variant="danger"
+                size="lg"
+                className="m-1"
+                onClick={() => filterHandler("Alla")}
+              >
+                Alla Produkter
+              </Button>
+              {categories.map((category, index) => (
+                <Button
+                  variant="danger"
+                  size="lg"
+                  className="m-1"
+                  key={index}
+                  onClick={() => filterHandler(category.name)}
+                >
+                  {category.name.charAt(0).toUpperCase() +
+                    category.name.slice(1)}
+                </Button>
+              ))}
+            </Stack>
+          </Col>
+          <Col style={{ minHeight: "100vh" }}>
+            <Main products={currentPosts} />
+            <PaginationFunction
+              totalposts={filteredProducts.length}
+              postsPerPage={postsPerPage}
+              setCurrentPage={setCurrentPage}
+            />
+          </Col>
+        </Row>
+      </Container>
+
       <Footer />
     </>
   );
