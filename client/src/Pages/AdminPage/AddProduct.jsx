@@ -18,7 +18,7 @@ const AddProduct = ({addProduct, setAddProduct, handleAddProduct}) => {
 
   return (
     <>
-      <button onClick={() => {
+      <button className='addProductBtn' onClick={() => {
         setAddProductBtn(!addProductBtn)
       }}>Add product</button>
       {addProductBtn && <ModalAdmin {...{setAddProductBtn, categoryList, addProduct, setAddProduct, handleAddProduct}}/>}

@@ -3,6 +3,7 @@ import HeaderAdmin from './HeaderAdmin.jsx'
 import Header from '../Homepage/Header.jsx'
 import Main from './MainAdmin.jsx'
 import axios from 'axios'
+
 const baseURL = "https://grupparbete.onrender.com"
 
 const AdminPage = ({ categories }) => {
@@ -22,7 +23,7 @@ const AdminPage = ({ categories }) => {
         JSON.stringify(addProduct),
         { headers: { "Content-type": "application/json" } }
       )
-      if(response.status === 201){
+      if (response.status === 201) {
         console.log("Product added.");
       }
     }
@@ -30,9 +31,9 @@ const AdminPage = ({ categories }) => {
       console.log("Error handling form: ");
       console.error(err.message);
     }
-    
+
   }
-  
+
 
   useEffect(() => {
     const getData = async () => {
@@ -45,9 +46,9 @@ const AdminPage = ({ categories }) => {
 
   return (
     <>
-    <Header/>
-        <HeaderAdmin {...{addProduct, setAddProduct, handleAddProduct}} />
-        <Main {...{ products, categories }} />
+      <Header />
+      <HeaderAdmin {...{ addProduct, setAddProduct, handleAddProduct }} />
+      <Main {...{ products, categories }} />
     </>
   )
 }
