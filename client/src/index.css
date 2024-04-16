@@ -1,3 +1,4 @@
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -126,6 +127,7 @@ button:focus-visible {
   justify-content: center;
 }
 
+
 .producList {
   display: flex;
   justify-content: space-evenly;
@@ -135,3 +137,4 @@ button:focus-visible {
   max-height: 500px;
   overflow-y: scroll;
 }
+
