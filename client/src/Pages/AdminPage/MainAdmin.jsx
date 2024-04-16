@@ -1,20 +1,33 @@
 import React from 'react'
 import ProductAdmin from './ProductAdmin'
+import Table from 'react-bootstrap/Table';
 
 
+const MainAdmin = ({ products, categories }) => {
 
-const MainAdmin = ({ products, categories}) => {
-    
     return (
         <>
             <main>
-                {products && products.map((product, index) => {
-                    return (
-                            <div key={index}>
-                                <ProductAdmin key={index} {...{ product, categories }} />
-                            </div>
-                    )
-                })}
+                <div className='mainAdmin'>
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Produkt</th>
+                            <th>Kategori</th>
+                            <th>Pris</th>
+                            <th>Redigera</th>
+                        </tr>
+                    </thead>
+                    {products && products.map((product, index) => {
+                        return (
+                            <>
+                                <ProductAdmin {...{ product, categories, index }} />
+                            </>
+                        )
+                    })}
+                </Table>
+                </div>
             </main>
         </>
     )
