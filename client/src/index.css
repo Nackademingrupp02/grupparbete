@@ -132,7 +132,7 @@ button:focus-visible {
   justify-content: space-evenly;
 }
 
-main > div{
+.mainAdmin{
   max-height: 500px;
   overflow-y: scroll;
 }

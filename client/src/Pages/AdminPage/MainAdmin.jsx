@@ -8,7 +8,7 @@ const MainAdmin = ({ products, categories }) => {
     return (
         <>
             <main>
-                <div>
+                <div className='mainAdmin'>
                 <Table striped bordered hover>
                     <thead>
                         <tr>
