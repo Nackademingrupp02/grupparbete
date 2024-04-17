@@ -13,7 +13,6 @@ const Header = ({cart, warning, setShow, show ,onLogout, isLoggedIn }) => {
         {isLoggedIn ? (
           <button onClick={onLogout}>Logout</button>
         ) : null}
-          <div className="cartHolder" onClick={()=>{setShow(!show)}}><span className="cartItems">{cart}</span ><span className="CartIcon" > Varokorg </span></div>
 
       </nav>
        

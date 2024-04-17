@@ -64,7 +64,6 @@ const HomePage = ({ categories }) => {
 
   return (
     <>
-      <Header cart={buying.length} warning ={warning} setShow ={setShow} show ={show}/>
       <Container>
         <Row>
           <Col className="col-3 w-25" style={{ minWidth: "25vh" }}>
