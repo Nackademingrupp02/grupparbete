@@ -28,7 +28,7 @@
 
     const handleLogin = async (credentials) => {
       try {
-        const response = await axios.post('http://localhost:8080/adminpage/login', credentials);
+        const response = await axios.post('https://grupparbete.onrender.com/adminpage/login', credentials);
         if (response.status === 200) {
           localStorage.setItem('token', response.data.token);
           setIsLoggedIn(true);

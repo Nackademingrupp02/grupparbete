@@ -8,7 +8,6 @@ import Product from '../../Components/Product';
 const ModalAdmin = ({ setAddProductBtn, categoryList, addProduct, setAddProduct, handleAddProduct }) => {
 
 
-  //useEffect för att undvika problemet med att addProduct.category är tom sträng om man inte ändrar i dropdown fönstret först
   useEffect(() => {
     if (!addProduct.category && categoryList) {
       setAddProduct({ ...addProduct, category: categoryList[0]._id })
