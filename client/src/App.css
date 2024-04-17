@@ -52,23 +52,39 @@
 
   position: fixed;
   right: 0px;
-  top: 10%;
-  width: 400px;
-  height: 400px;
+  top: 20%;
+  width: 350px;
+  
 
   background-color: rgba(255, 255, 255, 0.753);
   border: 1px solid rgba(0, 0, 0, 0.486);
   border-radius: 5px;
   z-index: 1;
+  
 }
 
 .Item {
   background-color: rgb(192, 192, 192);
   margin: 10px;
-  min-height: 200px;
-  width: 350px;
-}
+  min-height: 100px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 5%;
+  animation-duration: 4s;
 
+}
+.Item button {
+  background-color: red;
+  animation-name: kakaLOL;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+@keyframes kakaLOL {
+  0%   {background-color:rgb(255, 255, 255); }
+  50% {background-color:rgb(213, 226, 255); }
+ 
+  100% {background-color:rgb(255, 255, 255); }
+}
 .cartHolder {
   display: flex;
   
@@ -78,7 +94,8 @@
   
   background-color: rgba(233, 233, 233, 0.158);
 
-  position: fixed;
+  position: absolute;
+  top: 3%;
   right: 4%;
   height: 10%;
   width: 10%;
@@ -98,7 +115,7 @@
   position: absolute;
   left: 20px;
 
-  background-color: rgba(193, 246, 255, 0.336);
+  background-color: rgba(4, 134, 156, 0.336);
 
   margin: 5%;
   height: 50%;
