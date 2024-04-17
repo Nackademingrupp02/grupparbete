@@ -106,8 +106,11 @@ const Product = ({ product, buying, setBuying,  }) => {
               src={product.picture}
               style={{
                 float: "left",
-                objectFit: "fill",
+                objectFit: "contain",
                 maxWidth: "240px",
+                maxHeight: "240px",
+                minHeight: "240px",
+                minWidth: "240px",
               }}
             />
             <Card.Body>
