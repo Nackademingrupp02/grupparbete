@@ -45,26 +45,68 @@
   text-decoration: none;
 }
 
+.CartContainer {
+  display: grid;
+  overflow-y: scroll;
+  justify-content: center;
 
-.CartContainer{
- display: grid;
-overflow-y: scroll;
-justify-content: center;
+  position: fixed;
+  right: 0px;
+  top: 10%;
+  width: 400px;
+  height: 400px;
 
- position: fixed;
- right: 0px;
- width: 400px;
- height: 400px;
-
- background-color: rgba(255, 255, 255, 0.753);
- border: 1px solid rgba(0, 0, 0, 0.486);
- border-radius: 5px;
- z-index: 1;
+  background-color: rgba(255, 255, 255, 0.753);
+  border: 1px solid rgba(0, 0, 0, 0.486);
+  border-radius: 5px;
+  z-index: 1;
 }
 
-.Item{
+.Item {
   background-color: rgb(192, 192, 192);
   margin: 10px;
   min-height: 200px;
   width: 350px;
+}
+
+.cartHolder {
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  
+  background-color: rgba(233, 233, 233, 0.158);
+
+  position: fixed;
+  right: 4%;
+  height: 10%;
+  width: 10%;
+  border-radius: 50%;
+
+}
+.cartHolder:hover{
+
+  background-color: rgba(99, 99, 99, 0.212)  ;
+  border: 1px solid rgba(133, 133, 133, 0.438);
+}
+.cartItems {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  left: 20px;
+
+  background-color: rgba(193, 246, 255, 0.336);
+
+  margin: 5%;
+  height: 50%;
+  width: 25%;
+  border-radius: 50px;
+}
+
+.CartIcon{
+  position: absolute;
+  right: 15%;
 }

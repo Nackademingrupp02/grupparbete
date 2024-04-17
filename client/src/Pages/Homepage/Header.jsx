@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-const Header = ({ onLogout, isLoggedIn }) => {
+const Header = ({cart, warning, setShow, show ,onLogout, isLoggedIn }) => {
   return (
-    <header>
+    <>
+      <header>
 
       <nav className="navHeader" style={{ minWidth: "100vh" }}>
         <Link to="/">
@@ -13,9 +13,11 @@ const Header = ({ onLogout, isLoggedIn }) => {
         {isLoggedIn ? (
           <button onClick={onLogout}>Logout</button>
         ) : null}
-      </nav>
-    </header>
-  );
-};
+          <div className="cartHolder" onClick={()=>{setShow(!show)}}><span className="cartItems">{cart}</span ><span className="CartIcon" > Varokorg </span></div>
 
-export default Header;
+      </nav>
+       
+      </header>
+    </>
+  )
+}

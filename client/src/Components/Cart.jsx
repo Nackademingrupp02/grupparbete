@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const Cart = (props) => {
-  const { buying, setBuying, setCheckout } = props;
+  const { buying, setBuying, setCheckout, setShow, show } = props;
   const [price, setPrice] = useState(0);
 
   //adding sum of the carts item
@@ -13,7 +13,6 @@ const Cart = (props) => {
     setPrice(ans);
   };
 
-  
   const handleChange = (item, d) => {
     let ind = -1;
     buying.forEach((data, index) => {
@@ -63,32 +62,43 @@ const Cart = (props) => {
     
   
   return (
-    <div className="CartContainer">
-      <p>{buying.length}</p>
-      {buying.map((bought, index) => {
-        return (
-          <div key={index} className="Item">
-            <p>{bought.name}</p>
-            <p>{bought.price}</p>
+    <div>
+      {show &&   <div className="CartContainer">
+        <p>{buying.length}</p>
+        {buying.map((bought, index) => {
+          return (
+            <div key={index} className="Item">
+              <p>{bought.name}</p>
+              <p>{bought.price}</p>
 
-            <button onClick={() => handleChange(bought, "-")}>-</button>
-            <span>{bought.amount}</span>
-            <button onClick={() => handleChange(bought, "+")}>+</button>
+              <button onClick={() => handleChange(bought, "-")}>-</button>
+              <span>{bought.amount}</span>
+              <button onClick={() => handleChange(bought, "+")}>+</button>
 
-            <button onClick={() => handleRemove(bought._id)}>ta bort</button>
-          </div>
-        );
-      })}
+              <button onClick={() => handleRemove(bought._id)}>ta bort</button>
+            </div>
+          );
+        })}
 
-      <span>Total pris av din varukorg </span>
-      <span>pris: {price}</span>
-      <button
-        style={{
-          backgroundColor: "#CCCCCC", // gray color
-        }}
-        onClick={() => checkoutLS(buying)}>
-        Till kassan
-      </button>
+        <span>Total pris av din varukorg </span>
+        <span>pris: {price.toFixed(2)}</span>
+        <div>
+          <button
+            style={{
+              backgroundColor: "#CCCCCC", // gray color
+            }}
+            onClick={() => checkoutLS(buying)}>
+            Till kassan
+          </button>
+          <button
+            onClick={() => {
+              setShow(false);
+            }}>
+            Stäng
+          </button>
+        </div>
+      </div>}
+    
     </div>
   );
 };

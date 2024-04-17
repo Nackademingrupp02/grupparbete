@@ -18,6 +18,7 @@ const HomePage = ({ categories }) => {
   const [buying, setBuying] = useState([]);
   const [warning, setWarning] = useState(false);
 
+  const [show, setShow] =useState(false)
   const { products: filteredProducts } = useProductFetcher(
     filterButton,
     categories
@@ -63,7 +64,7 @@ const HomePage = ({ categories }) => {
 
   return (
     <>
-      {/* <Header /> */}
+      <Header cart={buying.length} warning ={warning} setShow ={setShow} show ={show}/>
       <Container>
         <Row>
           <Col className="col-3 w-25" style={{ minWidth: "25vh" }}>
@@ -91,7 +92,7 @@ const HomePage = ({ categories }) => {
             </Stack>
           </Col>
           <Col style={{ minHeight: "100vh" }}>
-            <Main products={currentPosts} setBuying={setBuying} buying={buying} warning ={warning} setWarning ={setWarning}/>
+            <Main products={currentPosts} setBuying={setBuying} buying={buying} warning ={warning} setWarning ={setWarning} setShow ={setShow} show ={show}/>
             <PaginationFunction
               totalposts={filteredProducts.length}
               postsPerPage={postsPerPage}
