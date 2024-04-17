@@ -57,7 +57,7 @@ const Cart = (props) => {
     function checkoutLS(buying) {
       sessionStorage.setItem('Items', JSON.stringify(buying));
       const storedItems = sessionStorage.getItem('Items');    
-      console.log(storedItems);
+      console.log('Stored Items: ', storedItems);
     }
     
   

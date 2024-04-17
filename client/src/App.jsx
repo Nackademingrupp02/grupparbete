@@ -7,6 +7,7 @@
   import AdminPage from "./Pages/AdminPage/AdminPage";
   import LoginPage from "./Pages/AdminPage/LoginPage";
   import useProductFetcher from "./Components/ProductFilter";
+  import Checkout from './Pages/CheckOutPage/CheckOutPage'
 
   function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -82,9 +83,9 @@
     <Navigate to="/login" />
   )
 } />
-
         <Route path="/kategori/:category" element={<HomePage {...{ filterHandler, categories, filterProducts }} />} />
         <Route path="/produkter/alla" element={<HomePage filterProducts={filterProducts} categories={categories} filterHandler={() => filterHandler("Alla")} />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </>
     );
