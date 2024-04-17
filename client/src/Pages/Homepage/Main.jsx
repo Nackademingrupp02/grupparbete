@@ -5,7 +5,7 @@ import Cart from "../../Components/Cart.jsx";
 
 import { Container, Row, Col } from "react-bootstrap";
 
-const Main = ({ products ,buying,setBuying, setWarning, warning}) => {
+const Main = ({ products ,buying,setBuying, setWarning, warning, setShow, show}) => {
 
   const [checkout, setCheckout] = useState([])
 
@@ -34,6 +34,8 @@ console.log(checkout);
           buying={buying}
           setBuying={setBuying}
           setCheckout = {setCheckout}
+          setShow ={setShow}
+          show ={show}
          
         />
         <Container className="products">
@@ -53,6 +55,7 @@ console.log(checkout);
                     },
                     buying: buying,
                     setBuying: setBuying,
+                    setShow:setShow
                     
                   }}
                 />

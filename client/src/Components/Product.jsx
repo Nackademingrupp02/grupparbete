@@ -11,7 +11,7 @@ import {
   ListGroupItem,
 } from "react-bootstrap";
 
-const Product = ({ product, buying, setBuying }) => {
+const Product = ({ product, buying, setBuying,  show, setShow}) => {
   const [modalShow, setModalShow] = useState(false);
   function MyVerticallyCenteredModal(props) {
     return (
@@ -126,8 +126,7 @@ const Product = ({ product, buying, setBuying }) => {
                 variant="danger"
                 className="px-4"
                 size="lg"
-                onClick={() => addToBuying(product)}
-              >
+                onClick={() => (addToBuying(product), setShow(true))}>
                 Köp
               </Button>
             </Card.Body>
