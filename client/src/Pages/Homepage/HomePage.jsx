@@ -15,6 +15,8 @@ const HomePage = ({ categories }) => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(30);
+  const [buying, setBuying] = useState([]);
+  const [warning, setWarning] = useState(false);
 
   const { products: filteredProducts } = useProductFetcher(
     filterButton,
@@ -89,7 +91,7 @@ const HomePage = ({ categories }) => {
             </Stack>
           </Col>
           <Col style={{ minHeight: "100vh" }}>
-            <Main products={currentPosts} />
+            <Main products={currentPosts} setBuying={setBuying} buying={buying} warning ={warning} setWarning ={setWarning}/>
             <PaginationFunction
               totalposts={filteredProducts.length}
               postsPerPage={postsPerPage}

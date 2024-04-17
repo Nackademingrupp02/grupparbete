@@ -11,17 +11,15 @@ import {
   ListGroupItem,
 } from "react-bootstrap";
 
-const Product = ({ product }) => {
+const Product = ({ product, buying, setBuying,  }) => {
   const [modalShow, setModalShow] = useState(false);
-
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal
         {...props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
+        centered>
         <Modal.Header>
           <Row>
             <Col>
@@ -77,6 +75,26 @@ const Product = ({ product }) => {
   const handleModal = () => {
     setModalShow(true);
   };
+
+  const addToBuying = (item) => {
+    item.amount = 1;
+
+    let isPresent = false;
+    buying.forEach((product) => {
+
+      if (item._id === product._id) isPresent = true;
+    });
+    if (isPresent) {
+//can add so you get an warning when user adding same product in cart 
+      // setWarning(true);
+      // setTimeout(() => {
+      //   setWarning(false);
+      // }, 2000);
+      return;
+    }
+    setBuying([...buying, item]);
+  };
+
   return (
     <>
       <Container>
@@ -103,7 +121,11 @@ const Product = ({ product }) => {
               </ListGroup.Item>
             </ListGroup>
             <Card.Body>
-              <Button variant="danger" className="px-4" size="lg">
+              <Button
+                variant="danger"
+                className="px-4"
+                size="lg"
+                onClick={() => addToBuying(product)}>
                 Köp
               </Button>
             </Card.Body>
