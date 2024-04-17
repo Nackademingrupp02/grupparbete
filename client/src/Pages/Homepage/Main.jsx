@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Product from "../../Components/Product.jsx";
 import ErrorMessage from "../../Components/NoProductError.jsx";
+import Cart from "../../Components/Cart.jsx";
+
 import { Container, Row, Col } from "react-bootstrap";
-const Main = ({ products }) => {
+
+const Main = ({ products ,buying,setBuying, setWarning, warning}) => {
+
+  const [checkout, setCheckout] = useState([])
+
+  useEffect(()=>{
+    //ta bort när den är färdig vill bara ha kontroll vart den hamnar
+console.log("Hello its me so ehmm... ");
+console.log("Here this could use for the checkout or else we can use local storage :)");
+console.log(checkout);
+  },[checkout])
   if (!Array.isArray(products)) {
     return (
       <main className="main">
@@ -18,6 +30,12 @@ const Main = ({ products }) => {
   } else {
     return (
       <main className="main">
+        <Cart
+          buying={buying}
+          setBuying={setBuying}
+          setCheckout = {setCheckout}
+         
+        />
         <Container className="products">
           <Row>
             {products.map((product, index) => (
@@ -33,6 +51,9 @@ const Main = ({ products }) => {
                         product.category.charAt(0).toUpperCase() +
                         product.category.slice(1),
                     },
+                    buying: buying,
+                    setBuying: setBuying,
+                    
                   }}
                 />
               </Col>
