@@ -46,7 +46,7 @@ const AdminPage = ({ categories }) => {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <HeaderAdmin {...{ addProduct, setAddProduct, handleAddProduct }} />
       <Main {...{ products, categories }} />
     </>
