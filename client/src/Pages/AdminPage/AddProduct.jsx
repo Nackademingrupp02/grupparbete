@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import ModalAdmin from './ModalAdmin.jsx'
+import { Button } from 'react-bootstrap'
 
 const AddProduct = ({addProduct, setAddProduct, handleAddProduct}) => {
 
@@ -18,9 +19,9 @@ const AddProduct = ({addProduct, setAddProduct, handleAddProduct}) => {
 
   return (
     <>
-      <button className='addProductBtn' onClick={() => {
+      <Button variant='danger' className='addProductBtn' onClick={() => {
         setAddProductBtn(!addProductBtn)
-      }}>Add product</button>
+      }}>Addera produkt</Button>
       {addProductBtn && <ModalAdmin {...{setAddProductBtn, categoryList, addProduct, setAddProduct, handleAddProduct}}/>}
     </>
   )

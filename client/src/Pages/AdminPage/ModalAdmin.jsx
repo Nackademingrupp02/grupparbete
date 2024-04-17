@@ -28,11 +28,39 @@ const ModalAdmin = ({ setAddProductBtn, categoryList, addProduct, setAddProduct,
 
             <Modal.Body>
               <div className='addProductInputs'>
-                <label htmlFor="addProductName">Name</label>
+                <label htmlFor="addProductName">Namn</label>
                 <input type="text" id="addProductName" value={addProduct.value} onChange={(e) => {
                   setAddProduct({ ...addProduct, name: e.target.value })
                 }} />
-                Category
+                <label htmlFor="addProductPrice">Pris</label>
+                <input type="number" id="addProductPrice" value={addProduct.price} onChange={(e) => {
+                  setAddProduct({ ...addProduct, price: e.target.value })
+                }} />
+                <label htmlFor='addProductPackageSize'>Paket storlek</label>
+                <input type='number' id='addProductPackageSize' value={addProduct.packageSize} onChange={(e) => {
+                  setAddProduct({...addProduct, packageSize: e.value.target})
+                }} />
+                <label htmlFor='addProductComparePrice'>Järmfor pris</label>
+                <input type='number' id='addProductComparePrice' value={addProduct.packageSize} onChange={(e) => {
+                  setAddProduct({...addProduct, comparePrice: e.value.target})
+                }} />
+                <label htmlFor='addProductBrand'>Varumärke</label>
+                <input type='text' id='addProductBrand' value={addProduct.packageSize} onChange={(e) => {
+                  setAddProduct({...addProduct, brand: e.value.target})
+                }} />
+                <label htmlFor='addProductDescription'>Beskrivning</label>
+                <input type='text' id='addProductDescription' value={addProduct.packageSize} onChange={(e) => {
+                  setAddProduct({...addProduct, description: e.value.target})
+                }} />
+                <label htmlFor='addProductIngredients'>Ingredienser</label>
+                <input type='text' id='addProductIngredients' value={addProduct.packageSize} onChange={(e) => {
+                  setAddProduct({...addProduct, ingredients: e.value.target})
+                }} />
+                <label htmlFor='addProductPicture'>Bild</label>
+                <input type='text' id='addProductPicture' value={addProduct.packageSize} onChange={(e) => {
+                  setAddProduct({...addProduct, picture: e.value.target})
+                }} />
+                <label htmlFor="addProductCategory">Kategori</label>
                 <select id='selectedCategory' value={addProduct.category} onChange={(e) => {
                   setAddProduct({ ...addProduct, category: e.target.value });
                 }}>
@@ -42,10 +70,6 @@ const ModalAdmin = ({ setAddProductBtn, categoryList, addProduct, setAddProduct,
                     )
                   })}
                 </select>
-                <label htmlFor="addProductPrice">Price</label>
-                <input type="number" id="addProductPrice" value={addProduct.price} onChange={(e) => {
-                  setAddProduct({ ...addProduct, price: e.target.value })
-                }} />
               </div>
             </Modal.Body>
 
@@ -53,7 +77,7 @@ const ModalAdmin = ({ setAddProductBtn, categoryList, addProduct, setAddProduct,
               <Button onClick={() => {
                 setAddProductBtn(false)
               }}>Close</Button>
-              <Button onClick={ () => { handleAddProduct()}}>Add product</Button>
+              <Button onClick={() => { handleAddProduct() }}>Add product</Button>
             </Modal.Footer>
             {/* <h3>Add product</h3>
               <div className='addProductInputs'>
