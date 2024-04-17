@@ -63,7 +63,7 @@ const HomePage = ({ categories }) => {
 
   return (
     <>
-      <Header/>
+      {/* <Header /> */}
       <Container>
         <Row>
           <Col className="col-3 w-25" style={{ minWidth: "25vh" }}>
