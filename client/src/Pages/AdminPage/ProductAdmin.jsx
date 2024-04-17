@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Table from 'react-bootstrap/Table';
+import { Button } from 'react-bootstrap';
 import { FaTrashAlt } from 'react-icons/fa'
 import { FaPen } from "react-icons/fa";
 
@@ -50,7 +50,7 @@ const ProductAdmin = ({ product, categories, index }) => {
     }));
   }
 
-  //Fixa bootstrap table
+
 
   return (
     <>
@@ -64,15 +64,15 @@ const ProductAdmin = ({ product, categories, index }) => {
             ))}
           </select> : getCategoryName()}</td>
           <td>{isEditing ? <input type="number" name="price" value={editedProduct.price} onChange={handleInputChange} /> : `${product.price} kr`}</td>
-          <div>
+          <td>
             {isEditing ? (
-              <button onClick={editProduct}>Spara</button>
+              <Button variant='danger' onClick={editProduct}>Spara</Button>
             ) : (
-              <button onClick={() => setIsEditing(true)}><FaPen /></button>
+              <Button variant='danger' onClick={() => setIsEditing(true)}><FaPen /></Button>
             )}
-            <button onClick={deleteProduct}><FaTrashAlt /></button>
+            <Button onClick={deleteProduct}><FaTrashAlt /></Button>
             {isDeleted && <p style={{ color: 'green' }}>{product.name} has been deleted.</p>}
-          </div>
+          </td>
         </tr>
       </tbody>
     </>
