@@ -5,7 +5,7 @@ const { productErrorHandler } = require("../util/apiHelpers.js");
 
 async function getAllProducts(req, res) {
   try {
-    const products = await Products.find();
+    const products = await Products.find().populate('category');
     res.json(products);
   } catch (error) {
     productErrorHandler(error, res);

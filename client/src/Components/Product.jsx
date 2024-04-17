@@ -19,7 +19,8 @@ const Product = ({ product, buying, setBuying,  show, setShow}) => {
         {...props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
-        centered>
+        centered
+      >
         <Modal.Header>
           <Row>
             <Col>
@@ -81,11 +82,10 @@ const Product = ({ product, buying, setBuying,  show, setShow}) => {
 
     let isPresent = false;
     buying.forEach((product) => {
-
       if (item._id === product._id) isPresent = true;
     });
     if (isPresent) {
-//can add so you get an warning when user adding same product in cart 
+      //can add so you get an warning when user adding same product in cart
       // setWarning(true);
       // setTimeout(() => {
       //   setWarning(false);
@@ -105,9 +105,10 @@ const Product = ({ product, buying, setBuying,  show, setShow}) => {
               variant="top"
               src={product.picture}
               style={{
-                float: "left",
-                objectFit: "fill",
+                objectFit: "contain",
                 maxWidth: "240px",
+                maxHeight: "240px",
+                minHeight: "240px",
               }}
             />
             <Card.Body>

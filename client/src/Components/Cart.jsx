@@ -53,12 +53,14 @@ const Cart = (props) => {
   });
   //cart to checkout useing localstorage
 
-  function checkoutLS(buying) {
-    sessionStorage.setItem("Items", JSON.stringify(buying));
-    const storedItems = sessionStorage.getItem("Items");
-    console.log(storedItems);
-  }
-
+    function checkoutLS(buying) {
+      sessionStorage.setItem('Items', JSON.stringify(buying));
+      const storedItems = sessionStorage.getItem('Items');    
+      console.log('Stored Items: ', storedItems);
+      window.location.href = '/checkout';
+    }
+    
+  
   return (
     <div>
       {show &&   <div className="CartContainer">
