@@ -1,50 +1,93 @@
 import { useEffect, useState } from "react";
 
-const Cart = () => {
-  let [Quantity, setQuantity] = useState(2);
-  let [endPrice, setEndPrice] = useState(0);
+const Cart = (props) => {
+  const { buying, setBuying, setCheckout } = props;
+  const [price, setPrice] = useState(0);
 
-  const dummydatas = [
-    { name: "dummy1", price: 1 },
-    { name: "dummy2", price: 2 },
-    { name: "dummy3", price: 3 },
-    { name: "dummy4", price: 4 },
-    { name: "dummy5", price: 5 },
-    { name: "dummy1", price: 1 },
-    { name: "dummy2", price: 2 },
-    { name: "dummy3", price: 3 },
-    { name: "dummy4", price: 4 },
-    { name: "dummy5", price: 5 },
-  ];
-
-  useEffect(() => {
-    dummydatas.map(async(data) => {
-      console.log(data.price);
-      return  setEndPrice(endPrice+ await parseInt(data.price))
+  //adding sum of the carts item
+  const handlePrice = () => {
+    let ans = 0;
+    buying.map((item) => {
+      ans += item.price * item.amount;
     });
-    console.log("end price", endPrice);
+    setPrice(ans);
+  };
 
-  }, 2);
+  
+  const handleChange = (item, d) => {
+    let ind = -1;
+    buying.forEach((data, index) => {
+      if (data._id === item._id) {
+        console.log("its working");
+        return (ind = index);
+      }
+    });
 
-  //Problem- all having the same Quantity
+    const tempArr = buying;
+    if (d === "+") {
+      console.log(tempArr);
+      console.log("add one amount");
+      tempArr[ind].amount += 1;
+    } else if (d === "-") {
+      console.log(tempArr);
+      console.log("remove one amount");
+
+      tempArr[ind].amount -= 1;
+    } else {
+      console.log("Something went wrong in handlechange(cart)");
+    }
+
+    if (tempArr[ind].amount === 0) {
+      tempArr[ind].amount = 1;
+    }
+    setBuying([...tempArr]);
+  };
+
+  //remove cart item
+  const handleRemove = (id) => {
+    const arr = buying.filter((item) => item._id !== id);
+    setBuying(arr);
+    // handlePrice()
+  };
+  useEffect(() => {
+    handlePrice();
+  });
+  //cart to checkout useing localstorage
+
+    function checkoutLS(buying) {
+      sessionStorage.setItem('Items', JSON.stringify(buying));
+      const storedItems = sessionStorage.getItem('Items');    
+      console.log(storedItems);
+    }
+    
+  
   return (
     <div className="CartContainer">
-      {dummydatas &&
-        dummydatas.map((dummydata, index) => {
-          return (
-            <div key={index} className="Item">
-              {dummydata.name}
-              <p>{dummydata.price}</p>
-              <button onClick={() => setQuantity(Quantity - 1)}>-</button>
-              <span>{Quantity}</span>
-              <button onClick={() => setQuantity(Quantity + 1)}>+</button>
-            </div>
-          );
-        })}
+      <p>{buying.length}</p>
+      {buying.map((bought, index) => {
+        return (
+          <div key={index} className="Item">
+            <p>{bought.name}</p>
+            <p>{bought.price}</p>
 
-      <br />
+            <button onClick={() => handleChange(bought, "-")}>-</button>
+            <span>{bought.amount}</span>
+            <button onClick={() => handleChange(bought, "+")}>+</button>
 
-      <p>Pris</p>
+            <button onClick={() => handleRemove(bought._id)}>ta bort</button>
+          </div>
+        );
+      })}
+
+      <span>Total pris av din varukorg </span>
+      <span>pris: {price}</span>
+      <button
+        style={{
+          backgroundColor: "#CCCCCC", // gray color
+        }}
+        onClick={() => checkoutLS(buying)}>
+        Till kassan
+      </button>
     </div>
   );
 };
