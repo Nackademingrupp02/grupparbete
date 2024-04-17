@@ -20,3 +20,4 @@ const Header = ({cart, warning, setShow, show ,onLogout, isLoggedIn }) => {
       </header>
     </>
   )
+}
