@@ -7,7 +7,9 @@
   import AdminPage from "./Pages/AdminPage/AdminPage";
   import LoginPage from "./Pages/AdminPage/LoginPage";
   import useProductFetcher from "./Components/ProductFilter";
-  import Checkout from './Pages/CheckOutPage/CheckOutPage'
+  import Checkout from './Pages/CheckOutPage/CheckOutPage';
+  import ConfirmationPage from "./Pages/CheckOutPage/ConfirmPage";
+  import Footer from "./Pages/Homepage/Footer";
 
   function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -86,7 +88,10 @@
         <Route path="/kategori/:category" element={<HomePage {...{ filterHandler, categories, filterProducts }} />} />
         <Route path="/produkter/alla" element={<HomePage filterProducts={filterProducts} categories={categories} filterHandler={() => filterHandler("Alla")} />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/confirmation" element={<ConfirmationPage/>}/>
       </Routes>
+     {/* Borde inte footen ligga här egentligen?? */}
+      {/* <Footer/> */} 
     </>
     );
   }

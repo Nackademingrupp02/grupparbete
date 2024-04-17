@@ -58,6 +58,7 @@ const Cart = (props) => {
       sessionStorage.setItem('Items', JSON.stringify(buying));
       const storedItems = sessionStorage.getItem('Items');    
       console.log('Stored Items: ', storedItems);
+      window.location.href = '/checkout';
     }
     
   
