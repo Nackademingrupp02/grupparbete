@@ -23,9 +23,9 @@ const ProductsSchema = new mongoose.Schema({
     match: /[a-zA-Z0-9\s]+[a-zA-Z0-9]+/,
   },
   comparePrice: {
-    type: Number,
+    type: String,
     required: true,
-    match: /^(\d+(?:,\d{1,2})?).*/,
+    match: /[a-zA-Z0-9\s]+[a-zA-Z0-9]+/,
   },
   brand: {
     type: String,
@@ -35,12 +35,13 @@ const ProductsSchema = new mongoose.Schema({
   description: {
     type: String,
     minlength: 10,
-    maxLength: 200,
+    maxLength: 500,
     match: /[a-zA-Z0-9\s]+[a-zA-Z0-9]+/,
   },
   ingredients: {
     type: String,
     match: /[a-zA-Z\s]+[a-zA-Z]+/,
+    maxLength: 500,
   },
   picture: {
     type: String,

@@ -11,9 +11,8 @@ import {
   ListGroupItem,
 } from "react-bootstrap";
 
-const Product = ({ product }) => {
+const Product = ({ product, buying, setBuying }) => {
   const [modalShow, setModalShow] = useState(false);
-
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal
@@ -27,7 +26,11 @@ const Product = ({ product }) => {
             <Col>
               <img
                 src={product.picture}
-                style={{ width: "20rem", height: "30rem", objectFit: "cover" }}
+                style={{
+                  maxwidth: "20rem",
+                  maxHeight: "20rem",
+                  objectFit: "cover",
+                }}
               />
             </Col>
             <Col>
@@ -52,8 +55,16 @@ const Product = ({ product }) => {
           </Row>
         </Modal.Header>
         <Modal.Body>
-          <h4>Innehållsförteckning</h4>
-          {product.ingredients}
+          <ListGroup>
+            <ListGroup.Item>
+              <h4>Innehållsförteckning</h4>
+              {product.ingredients}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <h4>Beskrivning</h4>
+              {product.description}
+            </ListGroup.Item>
+          </ListGroup>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={props.onHide}>Close</Button>
@@ -65,25 +76,43 @@ const Product = ({ product }) => {
   const handleModal = () => {
     setModalShow(true);
   };
+
+  const addToBuying = (item) => {
+    item.amount = 1;
+
+    let isPresent = false;
+    buying.forEach((product) => {
+      if (item._id === product._id) isPresent = true;
+    });
+    if (isPresent) {
+      //can add so you get an warning when user adding same product in cart
+      // setWarning(true);
+      // setTimeout(() => {
+      //   setWarning(false);
+      // }, 2000);
+      return;
+    }
+    setBuying([...buying, item]);
+  };
+
   return (
     <>
       <Container>
         <Row>
-          <Card style={{ width: "18rem" }}>
+          <Card style={{ textAlign: "center" }}>
             <Card.Img
               onClick={handleModal}
               variant="top"
               src={product.picture}
               style={{
-                width: "15rem",
-                maxWidth: "15rem",
-                height: "20rem",
-                objectFit: "scale-down",
+                objectFit: "contain",
+                maxWidth: "240px",
+                maxHeight: "240px",
+                minHeight: "240px",
               }}
             />
             <Card.Body>
               <Card.Title>{product.name}</Card.Title>
-              <Card.Text>{product.description}</Card.Text>
             </Card.Body>
             <ListGroup className="list-group-flush">
               <ListGroup.Item>{product.price} kr</ListGroup.Item>
@@ -93,7 +122,12 @@ const Product = ({ product }) => {
               </ListGroup.Item>
             </ListGroup>
             <Card.Body>
-              <Button variant="danger" className="px-4" size="lg">
+              <Button
+                variant="danger"
+                className="px-4"
+                size="lg"
+                onClick={() => addToBuying(product)}
+              >
                 Köp
               </Button>
             </Card.Body>

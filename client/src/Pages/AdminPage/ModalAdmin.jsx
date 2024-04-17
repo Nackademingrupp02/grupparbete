@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import CategoryOption from './CategoryOption';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal'
+import Product from '../../Components/Product';
 
 
 const ModalAdmin = ({ setAddProductBtn, categoryList, addProduct, setAddProduct, handleAddProduct }) => {
@@ -28,11 +29,47 @@ const ModalAdmin = ({ setAddProductBtn, categoryList, addProduct, setAddProduct,
 
             <Modal.Body>
               <div className='addProductInputs'>
-                <label htmlFor="addProductName">Name</label>
+                <label htmlFor="addProductName">Namn</label>
                 <input type="text" id="addProductName" value={addProduct.value} onChange={(e) => {
                   setAddProduct({ ...addProduct, name: e.target.value })
                 }} />
-                Category
+
+                <label htmlFor="addProductPrice">Pris</label>
+                <input type="number" id="addProductPrice" value={addProduct.price} onChange={(e) => {
+                  setAddProduct({ ...addProduct, price: e.target.value })
+                }} />
+                
+                <label htmlFor='addProductPackageSize'>Paket storlek</label>
+                <input type="number" id='addProductPackageSize' value={addProduct.packageSize} onChange={(e) => {
+                  setAddProduct({ ...addProduct, packageSize: e.target.value})
+                }} />
+
+                <label htmlFor='addProductPackageSize' id='addProductComparePrice'>Jämför pris</label>
+                <input type="number" id='addProductComparePrice' value={addProduct.comparePrice} onChange={(e) => {
+                  setAddProduct({ ...addProduct, comparePrice: e.target.value})
+                }} />
+
+                <label htmlFor='addProductBrand' id='addProductBrand'>Varumärke</label>
+                <input type='text' id='addProductBrand' value={addProduct.brand} onChange={(e) => {
+                  setAddProduct({ ...addProduct, brand: e.target.value})
+                }} />
+
+                <label htmlFor='addProductDescription' id='addProductDescription'>Beskrivning</label>
+                <input type="text" id='addProductDescription' value={addProduct.description} onChange={(e) => {
+                  setAddProduct({ ...addProduct, description: e.target.value})
+                }} />
+
+                <label htmlFor='addProductIngredients' id='addProductIngredients'>Ingredienser</label>
+                <input type="text" id='addProductIngredients' value={addProduct.ingredients} onChange={(e) => {
+                  setAddProduct({ ...addProduct, ingredients: e.target.value})
+                }} />
+
+                <label htmlFor="addProductPicture" id='addProductPicture'>Bild</label>
+                <input type='text' id='addProductPicture' value={addProduct.picture} onChange={(e) => {
+                  setAddProduct({ ...addProduct, picture: e.target.value})
+                }} />
+
+                <label htmlFor="addProductCategory">Kategori</label>
                 <select id='selectedCategory' value={addProduct.category} onChange={(e) => {
                   setAddProduct({ ...addProduct, category: e.target.value });
                 }}>
@@ -42,10 +79,6 @@ const ModalAdmin = ({ setAddProductBtn, categoryList, addProduct, setAddProduct,
                     )
                   })}
                 </select>
-                <label htmlFor="addProductPrice">Price</label>
-                <input type="number" id="addProductPrice" value={addProduct.price} onChange={(e) => {
-                  setAddProduct({ ...addProduct, price: e.target.value })
-                }} />
               </div>
             </Modal.Body>
 
