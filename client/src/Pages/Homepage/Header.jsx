@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const Header = () => {
+const Header = ({cart, warning, setShow, show}) => {
   return (
     <>
       <header>
@@ -10,6 +10,7 @@ const Header = () => {
             <h1 className="headerLinks">Hakim livs</h1>
           </Link>
           <Link to="/adminpage">Admin page</Link>
+          <div className="cartHolder" onClick={()=>{setShow(!show)}}><span className="cartItems">{cart}</span ><span className="CartIcon" > Varokorg </span></div>
         </nav>
       </header>
     </>
