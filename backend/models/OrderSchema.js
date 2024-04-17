@@ -10,6 +10,7 @@ const orderSchema = new mongoose.Schema({
   phone: { type: Number },
   email: { type: String },
   address: { type: String },
+  status: { type: String, enum: ['waiting', 'packed', 'delivered', 'declined'], default: 'waiting' }
 });
 
 const Orders = mongoose.model("Orders", orderSchema)
