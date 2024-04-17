@@ -27,7 +27,11 @@ const Product = ({ product }) => {
             <Col>
               <img
                 src={product.picture}
-                style={{ width: "20rem", height: "30rem", objectFit: "cover" }}
+                style={{
+                  maxwidth: "20rem",
+                  maxHeight: "20rem",
+                  objectFit: "cover",
+                }}
               />
             </Col>
             <Col>
@@ -52,8 +56,16 @@ const Product = ({ product }) => {
           </Row>
         </Modal.Header>
         <Modal.Body>
-          <h4>Innehållsförteckning</h4>
-          {product.ingredients}
+          <ListGroup>
+            <ListGroup.Item>
+              <h4>Innehållsförteckning</h4>
+              {product.ingredients}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <h4>Beskrivning</h4>
+              {product.description}
+            </ListGroup.Item>
+          </ListGroup>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={props.onHide}>Close</Button>
@@ -69,21 +81,19 @@ const Product = ({ product }) => {
     <>
       <Container>
         <Row>
-          <Card style={{ width: "18rem" }}>
+          <Card style={{ textAlign: "center" }}>
             <Card.Img
               onClick={handleModal}
               variant="top"
               src={product.picture}
               style={{
-                width: "15rem",
-                maxWidth: "15rem",
-                height: "20rem",
-                objectFit: "scale-down",
+                float: "left",
+                objectFit: "fill",
+                maxWidth: "240px",
               }}
             />
             <Card.Body>
               <Card.Title>{product.name}</Card.Title>
-              <Card.Text>{product.description}</Card.Text>
             </Card.Body>
             <ListGroup className="list-group-flush">
               <ListGroup.Item>{product.price} kr</ListGroup.Item>
