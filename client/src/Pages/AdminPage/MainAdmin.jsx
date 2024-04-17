@@ -55,9 +55,14 @@ const MainAdmin = ({ products, categories }) => {
                         <thead>
                             <tr>
                                 <th onClick={() => { handleSort('#'); handleProductSort('#'); }} ># {renderArrow('#')}</th>
+                                <th>Varumärke</th>
                                 <th onClick={() => { handleSort('product'); handleProductSort('product');} } >Produkt {renderArrow('product')}</th>
                                 <th onClick={() => { handleSort('category'); handleProductSort('category');}} >Kategori {renderArrow('category')}</th>
                                 <th>Pris</th>
+                                <th>Paket Storlek</th>
+                                <th>Jämför pris</th>
+                                <th>Beskrivelse</th>
+                                <th>Ingredienser</th>
                                 <th>Redigera/Ta bort</th>
                             </tr>
                         </thead>
