@@ -40,12 +40,12 @@ const ModalAdmin = ({ setAddProductBtn, categoryList, addProduct, setAddProduct,
                 }} />
                 
                 <label htmlFor='addProductPackageSize'>Paket storlek</label>
-                <input type="number" id='addProductPackageSize' value={addProduct.packageSize} onChange={(e) => {
+                <input type="text" id='addProductPackageSize' value={addProduct.packageSize} onChange={(e) => {
                   setAddProduct({ ...addProduct, packageSize: e.target.value})
                 }} />
 
                 <label htmlFor='addProductPackageSize' id='addProductComparePrice'>Jämför pris</label>
-                <input type="number" id='addProductComparePrice' value={addProduct.comparePrice} onChange={(e) => {
+                <input type="text" id='addProductComparePrice' value={addProduct.comparePrice} onChange={(e) => {
                   setAddProduct({ ...addProduct, comparePrice: e.target.value})
                 }} />
 
@@ -88,33 +88,6 @@ const ModalAdmin = ({ setAddProductBtn, categoryList, addProduct, setAddProduct,
               }}>Close</Button>
               <Button onClick={ () => { handleAddProduct()}}>Add product</Button>
             </Modal.Footer>
-            {/* <h3>Add product</h3>
-              <div className='addProductInputs'>
-                <label htmlFor="addProductName">Name</label>
-                <input type="text" id="addProductName" value={addProduct.value} onChange={(e) => {
-                  setAddProduct({ ...addProduct, name: e.target.value })
-                }} />
-                Category
-                <select id='selectedCategory' value={addProduct.category} onChange={(e) => {
-                  setAddProduct({ ...addProduct, category: e.target.value });
-                }}>
-                  {categoryList && categoryList.map((category, index) => {
-                    return (
-                      <CategoryOption key={index} {...{ category }} />
-                    )
-                  })}
-                </select>
-                <label htmlFor="addProductPrice">Price</label>
-                <input type="number" id="addProductPrice" value={addProduct.price} onChange={(e) => {
-                  setAddProduct({ ...addProduct, price: e.target.value })
-                }} />
-              </div>
-              <button onClick={ () => { handleAddProduct()}}>
-                Add product
-              </button>
-              <button onClick={() => {
-                setAddProductBtn(false)
-              }}>Close</button> */}
           </div>
         </div>
       </div>
