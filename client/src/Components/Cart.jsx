@@ -68,7 +68,7 @@ const Cart = (props) => {
           setShow(!show);
         }}>
         <span className="cartItems">{cart}</span>
-        <span className="CartIcon"> Varokorg </span>
+        <span className="CartIcon"> Varukorg </span>
       </div>
 
       {show && (
