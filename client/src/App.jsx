@@ -10,6 +10,7 @@ import useProductFetcher from "./Components/ProductFilter";
 import Checkout from "./Pages/CheckOutPage/CheckOutPage";
 import ConfirmationPage from "./Pages/CheckOutPage/ConfirmPage";
 import Footer from "./Pages/Homepage/Footer";
+import ViewOrders from "./Pages/AdminPage/ViewOrders";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -108,6 +109,9 @@ function App() {
             )
           }
         />
+  <Route
+    path="/adminpage/orders"
+    element={ <ViewOrders/>} />
         <Route
           path="/kategori/:category"
           element={
@@ -127,8 +131,6 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/confirmation" element={<ConfirmationPage />} />
       </Routes>
-      {/* Borde inte footen ligga här egentligen?? */}
-      {/* <Footer/> */}
     </>
   );
 }
