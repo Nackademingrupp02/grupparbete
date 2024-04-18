@@ -5,16 +5,14 @@ const CheckoutPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({ name: '', address: '' });
+  const [formData, setFormData] = useState({ name: '', address: '', phone: '', email: '' });
 
   useEffect(() => {
-    // Retrieve data from sessionStorage
     const storedItems = sessionStorage.getItem('Items');
     if (storedItems) {
       const parsedItems = JSON.parse(storedItems);
       setCartItems(parsedItems);
 
-      //calculate price
       const totalPrice = parsedItems.reduce((acc, item) => acc + (item.price * item.amount), 0);
       setTotalPrice(totalPrice);
     }
@@ -23,13 +21,46 @@ const CheckoutPage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission (e.g., submit to backend)
-    console.log('Form submitted:', formData);
-    // Optionally, you can redirect the user or perform other actions after form submission
-  };
+    
+    try {
+      const productsData = cartItems.map(item => ({
+        name: item.name,
+        amount : item.amount,
+        price: item.price
+      }));
 
+      const orderData = {
+        products: productsData,
+        price: totalPrice,
+        fullName: formData.name,
+        address: formData.address,
+        phone: formData.phone,
+        email: formData.email
+      };
+  
+      console.log('Order data:', orderData);
+
+      const response = await fetch('https://grupparbete.onrender.com/order/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit order');
+      }
+
+      window.location.href = '/confirmation';
+
+      console.log('Order submitted successfully');
+    } catch (error) {
+      console.error('Error submitting order:', error.message);
+    }
+  };
   return (
     <div>
       <h1>Checkout Page</h1>
@@ -37,9 +68,17 @@ const CheckoutPage = () => {
         {cartItems.map((item, index) => (
           <li key={index}>
             <h2>{item.name}</h2>
-            <p>Pris: {item.price} kr</p>
+            <img
+                src={item.picture}
+                style={{
+                  maxwidth: "10rem",
+                  maxHeight: "10rem",
+                  objectFit: "cover",
+                }}
+              />
+            <p>Pris: {item.price}</p>
             <p>Antal: {item.amount}</p>
-            {/* Add other product details */}
+            <p>Total: {item.price * item.amount} kr</p>
           </li>
         ))}
       </ul>
@@ -60,12 +99,34 @@ const CheckoutPage = () => {
             />
           </div>
           <div>
-            <label htmlFor="address">Address:</label>
+            <label htmlFor="address">Adress:</label>
             <input
               type="text"
               id="address"
               name="address"
               value={formData.address}
+              onChange={handleChange}
+              required
+            />
+          </div>
+            <div>
+            <label htmlFor="phone">Telefon:</label>
+            <input
+              type="number"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+            />
+          </div>
+            <div>
+            <label htmlFor="email">E-post:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
               onChange={handleChange}
               required
             />

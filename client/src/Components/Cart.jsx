@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const Cart = (props) => {
-  const { buying, setBuying, setCheckout } = props;
+  const { buying, setBuying, setCheckout, setShow, show , cart} = props;
   const [price, setPrice] = useState(0);
 
   //adding sum of the carts item
@@ -13,7 +13,6 @@ const Cart = (props) => {
     setPrice(ans);
   };
 
-  
   const handleChange = (item, d) => {
     let ind = -1;
     buying.forEach((data, index) => {
@@ -54,40 +53,63 @@ const Cart = (props) => {
   });
   //cart to checkout useing localstorage
 
-    function checkoutLS(buying) {
-      sessionStorage.setItem('Items', JSON.stringify(buying));
-      const storedItems = sessionStorage.getItem('Items');    
-      console.log('Stored Items: ', storedItems);
-    }
-    
-  
+  function checkoutLS(buying) {
+    sessionStorage.setItem("Items", JSON.stringify(buying));
+    const storedItems = sessionStorage.getItem("Items");
+    console.log("Stored Items: ", storedItems);
+    window.location.href = "/checkout";
+  }
+
   return (
-    <div className="CartContainer">
-      <p>{buying.length}</p>
-      {buying.map((bought, index) => {
-        return (
-          <div key={index} className="Item">
-            <p>{bought.name}</p>
-            <p>{bought.price}</p>
+    <div>
+      <div
+        className="cartHolder"
+        onClick={() => {
+          setShow(!show);
+        }}>
+        <span className="cartItems">{cart}</span>
+        <span className="CartIcon"> Varukorg </span>
+      </div>
 
-            <button onClick={() => handleChange(bought, "-")}>-</button>
-            <span>{bought.amount}</span>
-            <button onClick={() => handleChange(bought, "+")}>+</button>
+      {show && (
+        <div className="CartContainer">
+          <p>{buying.length}</p>
+          {buying.map((bought, index) => {
+            return (
+              <div key={index} className="Item">
+                <p>{bought.name}</p>
+                <p>{bought.price}</p>
 
-            <button onClick={() => handleRemove(bought._id)}>ta bort</button>
+                <button onClick={() => handleChange(bought, "-")}>-</button>
+                <span>{bought.amount}</span>
+                <button onClick={() => handleChange(bought, "+")}>+</button>
+
+                <button onClick={() => handleRemove(bought._id)}>
+                  ta bort
+                </button>
+              </div>
+            );
+          })}
+
+          <span>Total pris av din varukorg </span>
+          <span>pris: {price.toFixed(2)}</span>
+          <div>
+            <button
+              style={{
+                backgroundColor: "#CCCCCC", // gray color
+              }}
+              onClick={() => checkoutLS(buying)}>
+              Till kassan
+            </button>
+            <button
+              onClick={() => {
+                setShow(false);
+              }}>
+              Stäng
+            </button>
           </div>
-        );
-      })}
-
-      <span>Total pris av din varukorg </span>
-      <span>pris: {price}</span>
-      <button
-        style={{
-          backgroundColor: "#CCCCCC", // gray color
-        }}
-        onClick={() => checkoutLS(buying)}>
-        Till kassan
-      </button>
+        </div>
+      )}
     </div>
   );
 };

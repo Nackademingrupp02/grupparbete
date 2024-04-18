@@ -9,5 +9,10 @@ const orderSchema = new mongoose.Schema({
   fullName: { type: String, required: true, match: /[a-zA-Z\s]+[a-zA-Z]+/ },
   phone: { type: Number },
   email: { type: String },
-  adress: { type: String },
+  address: { type: String },
+  status: { type: String, enum: ['waiting', 'packed', 'delivered', 'declined'], default: 'waiting' }
 });
+
+const Orders = mongoose.model("Orders", orderSchema)
+
+module.exports = Orders

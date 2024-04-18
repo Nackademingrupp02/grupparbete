@@ -40,4 +40,20 @@ async function removeOrder(req, res) {
   } catch (error) {}
 }
 
-module.exports = { getAllOrders, addOrder, removeOrder, getOrder };
+
+async function updateOrderStatus(req, res) {
+  const { id } = req.params;
+  const { status } = req.body;
+  try {
+    const updatedOrder = await Orders.findByIdAndUpdate(id, { status }, {new: true});
+    if (!updatedOrder) {
+      return res.status(404).json({ message: "order not found" });
+    }
+    res.json(updatedOrder);
+  } catch (error) {
+    res.status(500).json({ message: "internal server errorr:", error})
+
+  }
+}
+
+module.exports = { getAllOrders, addOrder, removeOrder, getOrder, updateOrderStatus };
