@@ -93,8 +93,9 @@ const Cart = (props) => {
 
           <span>Total pris av din varukorg </span>
           <span>pris: {price.toFixed(2)}</span>
-          <div>
+          <div className="cartBtn">
             <button
+            
               style={{
                 backgroundColor: "#CCCCCC", // gray color
               }}
@@ -102,6 +103,7 @@ const Cart = (props) => {
               Till kassan
             </button>
             <button
+            className="tocheckoutbtn"
               onClick={() => {
                 setShow(false);
               }}>
