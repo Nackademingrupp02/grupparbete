@@ -96,9 +96,7 @@ const Cart = (props) => {
           <div className="cartBtn">
             <button
             
-              style={{
-                backgroundColor: "#CCCCCC", // gray color
-              }}
+              
               onClick={() => {
                 if(buying.length > 0){
                   return checkoutLS(buying)
@@ -110,7 +108,7 @@ const Cart = (props) => {
               Till kassan
             </button>
             <button
-            className="tocheckoutbtn"
+           
               onClick={() => {
                 setShow(false);
               }}>
