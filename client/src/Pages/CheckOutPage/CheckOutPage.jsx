@@ -63,7 +63,7 @@ const CheckoutPage = () => {
   };
   return (
     <div>
-      <h1>Checkout Page</h1>
+      <h1>Din kassa</h1>
       <ul>
         {cartItems.map((item, index) => (
           <li key={index}>
@@ -88,7 +88,7 @@ const CheckoutPage = () => {
       ) : (
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="name">Namn:</label>
             <input
               type="text"
               id="name"
@@ -135,6 +135,8 @@ const CheckoutPage = () => {
               required
             />
           </div>
+
+          <button type="submit">Slutför köp</button>
           <div>
             <br></br>
             <p>Levereras till dörren och betalas i efterhand med Swish/kontant vid leverans.</p>

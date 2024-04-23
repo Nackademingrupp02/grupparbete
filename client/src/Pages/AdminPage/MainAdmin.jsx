@@ -8,13 +8,11 @@ import Table from 'react-bootstrap/Table';
 const MainAdmin = ({ products, categories }) => {
 
     const [sortProducts, setSortProducts] = useState([])
-    const [sortCategories, setSortCategories] = useState([])
     const [sortKey, setSortKey] = useState('')
 
     useEffect(() => {
         setSortProducts(products)
-        setSortCategories(categories)
-    }, [products, categories])
+    }, [products])
 
     const handleSort = (key) => {
         setSortKey(key);
@@ -30,15 +28,11 @@ const MainAdmin = ({ products, categories }) => {
 
     const handleProductSort = (str) => {
         let sortedProducts = [...sortProducts]
-        let sortedCategories = [...sortProducts]
         if(str === 'product'){
             sortedProducts.sort((a, b) => a.name.localeCompare(b.name))
             return setSortProducts(sortedProducts)
         }
-        else if(str === 'category'){
-            categories.sort((a, b) => a.name.localeCompare(b.name))
-            setSortCategories(sortedCategories)
-        }
+
         else{
             setSortProducts(products)
         }
@@ -55,16 +49,22 @@ const MainAdmin = ({ products, categories }) => {
                         <thead>
                             <tr>
                                 <th onClick={() => { handleSort('#'); handleProductSort('#'); }} ># {renderArrow('#')}</th>
+                                <th>Varumärke</th>
                                 <th onClick={() => { handleSort('product'); handleProductSort('product');} } >Produkt {renderArrow('product')}</th>
                                 <th onClick={() => { handleSort('category'); handleProductSort('category');}} >Kategori {renderArrow('category')}</th>
                                 <th>Pris</th>
+                                <th>Paket Storlek</th>
+                                <th>Jämför pris</th>
+                                <th>Beskrivelse</th>
+                                <th>Ingredienser</th>
+                                <th>Bild</th>
                                 <th>Redigera/Ta bort</th>
                             </tr>
                         </thead>
                         {sortProducts && sortProducts.map((product, index) => {
                             return (
                                 <>
-                                    <ProductAdmin categories={sortCategories} {...{ product, index }} />
+                                    <ProductAdmin  {...{ product, index, categories }} />
                                 </>
                             )
                         })}

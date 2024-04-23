@@ -84,8 +84,8 @@ const ModalAdmin = ({ setAddProductBtn, categoryList, addProduct, setAddProduct,
             <Modal.Footer>
               <Button onClick={() => {
                 setAddProductBtn(false)
-              }}>Close</Button>
-              <Button onClick={ () => { handleAddProduct()}}>Add product</Button>
+              }}>Stäng</Button>
+              <Button onClick={ () => { handleAddProduct()}}>Addera produkt</Button>
             </Modal.Footer>
           </div>
         </div>
