@@ -68,10 +68,11 @@ const AdminPage = () => {
               </td>
               <td>
                 <select value={order.status} onChange={(e) => updateOrderStatus(order._id, e.target.value)}>
-                  <option value="waiting">Waiting</option>
-                  <option value="packed">Packed</option>
-                  <option value="delivered">Delivered</option>
-                  <option value="declined">Declined</option>
+                  <option value="Väntar">Väntar</option>
+                  <option value="Packad">Packad</option>
+                  <option value="Levererad">Levererad</option>
+                  <option value="Makulerad">Makulerad</option>
+                  <option value="Betald">Betald</option>
                 </select>
                 </td>
                 <td><GeneratePDF order={order} />
