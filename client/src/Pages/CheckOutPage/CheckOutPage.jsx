@@ -78,11 +78,11 @@ const CheckoutPage = () => {
               />
             <p>Pris: {item.price}</p>
             <p>Antal: {item.amount}</p>
-            <p>Total: {item.price * item.amount} kr</p>
+            <p>Total: {(item.price * item.amount).toFixed(2)} kr</p>
           </li>
         ))}
       </ul>
-      <h2>Totala Pris: {totalPrice}</h2>
+      <h2>Totala Pris: {totalPrice.toFixed(2)}</h2>
       {!showForm ? (
         <button onClick={() => setShowForm(true)}>Fortsätt</button>
       ) : (
