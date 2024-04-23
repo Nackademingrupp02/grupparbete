@@ -18,7 +18,17 @@ const Main = ({ products ,buying,setBuying, setWarning, warning, setShow, show, 
   } else if (products.length === 0) {
     return (
       <main className="main">
+         <Cart
+          buying={buying}
+          setBuying={setBuying}
+          setCheckout = {setCheckout}
+          setShow ={setShow}
+          show ={show}
+          cart={buying.length} warning ={warning}
+         
+        />
         <ErrorMessage message="Inga produkter hittades" />
+       
       </main>
     );
   } else {
