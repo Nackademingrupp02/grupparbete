@@ -76,7 +76,7 @@ const CheckoutPage = () => {
                   objectFit: "cover",
                 }}
               />
-            <p>Pris: {item.price}</p>
+            <p>Pris: {item.price.toFixed(2)}</p>
             <p>Antal: {item.amount}</p>
             <p>Total: {(item.price * item.amount).toFixed(2)} kr</p>
           </li>

@@ -78,10 +78,10 @@ const Cart = (props) => {
             return (
               <div key={index} className="Item">
                 <p>{bought.name}</p>
-                <p>{bought.price}</p>
+                <p>{bought.price.toFixed(2)} Kr</p>
 
                 <button onClick={() => handleChange(bought, "-")}>-</button>
-                <span>{bought.amount}</span>
+                <span>Antal: {bought.amount}</span>
                 <button onClick={() => handleChange(bought, "+")}>+</button>
 
                 <button onClick={() => handleRemove(bought._id)}>
@@ -92,7 +92,7 @@ const Cart = (props) => {
           })}
 
           <span>Total pris av din varukorg </span>
-          <span>pris: {price.toFixed(2)}</span>
+          <span>pris: {price.toFixed(2)} kr</span>
           <div className="cartBtn">
             <button
             
