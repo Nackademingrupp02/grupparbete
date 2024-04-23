@@ -67,7 +67,7 @@ const ProductAdmin = ({ product, categories, index }) => {
             ))}
           </select> : getCategoryName()}</td>
 
-          <td>{isEditing ? <input type="number" name="price" value={editedProduct.price} onChange={handleInputChange} /> : `${product.price} kr`}</td>
+          <td>{isEditing ? <input type="number" name="price" value={editedProduct.price} onChange={handleInputChange} /> : `${product.price.toFixed(2)} kr`}</td>
           <td>{isEditing ? <input type="text" name="packageSize" value={editedProduct.packageSize} onChange={handleInputChange} /> : product.packageSize}</td>
           <td>{isEditing ? <input type="text" name="comparePrice" value={editedProduct.comparePrice} onChange={handleInputChange} /> : product.comparePrice}</td>
           <td>{isEditing ? <input type="text" name="description" value={editedProduct.description} onChange={handleInputChange} /> : (
