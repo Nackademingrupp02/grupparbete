@@ -95,6 +95,7 @@ const CheckoutPage = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
+              maxLength={50}
               required
             />
           </div>
@@ -106,6 +107,7 @@ const CheckoutPage = () => {
               name="address"
               value={formData.address}
               onChange={handleChange}
+              maxLength={50}
               required
             />
           </div>
@@ -117,8 +119,10 @@ const CheckoutPage = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               required
-            />
+              />
+
           </div>
             <div>
             <label htmlFor="email">E-post:</label>
@@ -131,7 +135,13 @@ const CheckoutPage = () => {
               required
             />
           </div>
+
           <button type="submit">Slutför köp</button>
+          <div>
+            <br></br>
+            <p>Levereras till dörren och betalas i efterhand med Swish/kontant vid leverans.</p>
+          </div>
+          <button type="submit">Submit</button>
         </form>
       )}
     </div>
