@@ -115,7 +115,7 @@ const Product = ({ product, buying, setBuying,  show, setShow}) => {
               <Card.Title>{product.name}</Card.Title>
             </Card.Body>
             <ListGroup className="list-group-flush">
-              <ListGroup.Item>{product.price} kr</ListGroup.Item>
+              <ListGroup.Item>{product.price.toFixed(2)} kr</ListGroup.Item>
               <ListGroup.Item>{product.comparePrice}</ListGroup.Item>
               <ListGroup.Item>
                 {product.brand} | {product.packageSize}
