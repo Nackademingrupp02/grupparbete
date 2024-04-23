@@ -89,8 +89,8 @@ const ProductAdmin = ({ product, categories, index }) => {
             </>
           )}</td>
           <td>{isEditing ? <input type='text' name="picture" value={editedProduct.picture} onChange={handleInputChange} /> : <img src={product.picture} style={{
-                  maxwidth: "20rem",
-                  maxHeight: "20rem",
+                  maxwidth: "3rem",
+                  maxHeight: "3rem",
                   objectFit: "cover",
                 }} />}</td>
           <td>
