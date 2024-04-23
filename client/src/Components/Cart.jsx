@@ -99,7 +99,14 @@ const Cart = (props) => {
               style={{
                 backgroundColor: "#CCCCCC", // gray color
               }}
-              onClick={() => checkoutLS(buying)}>
+              onClick={() => {
+                if(buying.length > 0){
+                  return checkoutLS(buying)
+                }
+                else{
+                  alert('Din varukorg är tom')
+                }
+              }}>
               Till kassan
             </button>
             <button
