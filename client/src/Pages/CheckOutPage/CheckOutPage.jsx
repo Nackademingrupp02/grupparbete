@@ -135,6 +135,10 @@ const CheckoutPage = () => {
               required
             />
           </div>
+          <div>
+            <br></br>
+            <p>Levereras till dörren och betalas i efterhand med Swish/kontant vid leverans.</p>
+          </div>
           <button type="submit">Submit</button>
         </form>
       )}
