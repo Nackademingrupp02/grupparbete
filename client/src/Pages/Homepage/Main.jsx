@@ -18,7 +18,7 @@ const Main = ({ products ,buying,setBuying, setWarning, warning, setShow, show, 
   } else if (products.length === 0) {
     return (
       <main className="main">
-        <ErrorMessage message="No products found." />
+        <ErrorMessage message="Inga produkter hittades" />
       </main>
     );
   } else {

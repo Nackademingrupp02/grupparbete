@@ -41,7 +41,7 @@ const ProductAdmin = ({ product, categories, index }) => {
     const category = categories.find(cat => cat._id === product.category);
     return category ? category.name : 'Unknown';
   }
-  
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -65,29 +65,34 @@ const ProductAdmin = ({ product, categories, index }) => {
             {categories.map(category => (
               <option key={category._id} value={category._id}>{category.name}</option>
             ))}
-          </select> : getCategoryName()}</td> 
-       
+          </select> : getCategoryName()}</td>
+
           <td>{isEditing ? <input type="number" name="price" value={editedProduct.price} onChange={handleInputChange} /> : `${product.price} kr`}</td>
           <td>{isEditing ? <input type="text" name="packageSize" value={editedProduct.packageSize} onChange={handleInputChange} /> : product.packageSize}</td>
           <td>{isEditing ? <input type="text" name="comparePrice" value={editedProduct.comparePrice} onChange={handleInputChange} /> : product.comparePrice}</td>
           <td>{isEditing ? <input type="text" name="description" value={editedProduct.description} onChange={handleInputChange} /> : (
-    <>
-      {product.description.length > 30 ? (
-        product.description.slice(0, 30) + "..."
-      ) : (
-        product.description
-      )}
-    </>
-  )}</td>
+            <>
+              {product.description.length > 30 ? (
+                product.description.slice(0, 30) + "..."
+              ) : (
+                product.description
+              )}
+            </>
+          )}</td>
           <td>{isEditing ? <input type="text" name="ingredients" value={editedProduct.ingredients} onChange={handleInputChange} /> : (
-    <>
-      {product.ingredients.length > 30 ? (
-        product.ingredients.slice(0, 30) + "..."
-      ) : (
-        product.ingredients
-      )}
-    </>
-  )}</td>
+            <>
+              {product.ingredients.length > 30 ? (
+                product.ingredients.slice(0, 30) + "..."
+              ) : (
+                product.ingredients
+              )}
+            </>
+          )}</td>
+          <td>{isEditing ? <input type='text' name="picture" value={editedProduct.picture} onChange={handleInputChange} /> : <img src={product.picture} style={{
+                  maxwidth: "20rem",
+                  maxHeight: "20rem",
+                  objectFit: "cover",
+                }} />}</td>
           <td>
             {isEditing ? (
               <Button variant='danger' onClick={editProduct}>Spara</Button>

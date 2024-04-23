@@ -57,6 +57,7 @@ const MainAdmin = ({ products, categories }) => {
                                 <th>Jämför pris</th>
                                 <th>Beskrivelse</th>
                                 <th>Ingredienser</th>
+                                <th>Bild</th>
                                 <th>Redigera/Ta bort</th>
                             </tr>
                         </thead>
