@@ -82,7 +82,7 @@ const CheckoutPage = () => {
           </li>
         ))}
       </ul>
-      <h2>Totala Pris: {totalPrice.toFixed(2)}</h2>
+      <h2>Totala Pris: {totalPrice.toFixed(2)} kr</h2>
       {!showForm ? (
         <button onClick={() => setShowForm(true)}>Fortsätt</button>
       ) : (
@@ -136,12 +136,13 @@ const CheckoutPage = () => {
             />
           </div>
 
+          <p>Levereras till dörren och betalas i efterhand med Swish/kontant vid leverans.</p>
+          <br/>
           <button type="submit">Slutför köp</button>
           <div>
             <br></br>
-            <p>Levereras till dörren och betalas i efterhand med Swish/kontant vid leverans.</p>
+
           </div>
-          <button type="submit">Submit</button>
         </form>
       )}
     </div>
