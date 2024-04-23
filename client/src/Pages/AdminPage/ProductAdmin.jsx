@@ -41,6 +41,7 @@ const ProductAdmin = ({ product, categories, index }) => {
     const category = categories.find(cat => cat._id === product.category);
     return category ? category.name : 'Unknown';
   }
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -50,7 +51,7 @@ const ProductAdmin = ({ product, categories, index }) => {
     }));
   }
 
-  
+
 
 
   return (
@@ -64,7 +65,8 @@ const ProductAdmin = ({ product, categories, index }) => {
             {categories.map(category => (
               <option key={category._id} value={category._id}>{category.name}</option>
             ))}
-          </select> : getCategoryName()}</td>
+          </select> : getCategoryName()}</td> 
+       
           <td>{isEditing ? <input type="number" name="price" value={editedProduct.price} onChange={handleInputChange} /> : `${product.price} kr`}</td>
           <td>{isEditing ? <input type="text" name="packageSize" value={editedProduct.packageSize} onChange={handleInputChange} /> : product.packageSize}</td>
           <td>{isEditing ? <input type="text" name="comparePrice" value={editedProduct.comparePrice} onChange={handleInputChange} /> : product.comparePrice}</td>

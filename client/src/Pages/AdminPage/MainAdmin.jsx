@@ -8,13 +8,11 @@ import Table from 'react-bootstrap/Table';
 const MainAdmin = ({ products, categories }) => {
 
     const [sortProducts, setSortProducts] = useState([])
-    const [sortCategories, setSortCategories] = useState([])
     const [sortKey, setSortKey] = useState('')
 
     useEffect(() => {
         setSortProducts(products)
-        setSortCategories(categories)
-    }, [products, categories])
+    }, [products])
 
     const handleSort = (key) => {
         setSortKey(key);
@@ -30,15 +28,11 @@ const MainAdmin = ({ products, categories }) => {
 
     const handleProductSort = (str) => {
         let sortedProducts = [...sortProducts]
-        let sortedCategories = [...sortProducts]
         if(str === 'product'){
             sortedProducts.sort((a, b) => a.name.localeCompare(b.name))
             return setSortProducts(sortedProducts)
         }
-        else if(str === 'category'){
-            categories.sort((a, b) => a.name.localeCompare(b.name))
-            setSortCategories(sortedCategories)
-        }
+
         else{
             setSortProducts(products)
         }
@@ -69,7 +63,7 @@ const MainAdmin = ({ products, categories }) => {
                         {sortProducts && sortProducts.map((product, index) => {
                             return (
                                 <>
-                                    <ProductAdmin categories={sortCategories} {...{ product, index }} />
+                                    <ProductAdmin  {...{ product, index, categories }} />
                                 </>
                             )
                         })}

@@ -11,6 +11,7 @@ import Checkout from "./Pages/CheckOutPage/CheckOutPage";
 import ConfirmationPage from "./Pages/CheckOutPage/ConfirmPage";
 import Footer from "./Pages/Homepage/Footer";
 import ViewOrders from "./Pages/AdminPage/ViewOrders";
+const baseURL = "https://grupparbete.onrender.com";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -62,14 +63,11 @@ function App() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch(
-          "https://grupparbete.onrender.com/category/all"
-        );
-        if (!response.ok) {
+        const response = await axios.get(baseURL + "/category/all");
+        if (!response.data) {
           throw new Error("Failed to fetch categories");
         }
-        const data = await response.json();
-        setCategories(data);
+        setCategories(response.data);
       } catch (error) {
         console.error("Error fetching categories: ", error);
       }
@@ -80,6 +78,8 @@ function App() {
   function filterHandler(string) {
     setFilterButton(string);
   }
+
+
 
   return (
     <>

@@ -9,12 +9,6 @@ const Main = ({ products ,buying,setBuying, setWarning, warning, setShow, show, 
 
   const [checkout, setCheckout] = useState([])
 
-  useEffect(()=>{
-    //ta bort när den är färdig vill bara ha kontroll vart den hamnar
-console.log("Hello its me so ehmm... ");
-console.log("Here this could use for the checkout or else we can use local storage :)");
-console.log(checkout);
-  },[checkout])
   if (!Array.isArray(products)) {
     return (
       <main className="main">
