@@ -8,7 +8,8 @@ const HeaderAdmin = ({ addProduct, setAddProduct, handleAddProduct }) => {
     <>
       <div className='navHeader'>
         <h2>Admin Page</h2>
-        <Link to="/adminpage/orders">Orders</Link>
+        <Link to="/adminpage">Produkter</Link>
+        <Link to="/adminpage/orders">Ordrar</Link>
         <AddProduct {...{ addProduct, setAddProduct, handleAddProduct }} />
       </div>
     </>
