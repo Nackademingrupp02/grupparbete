@@ -109,9 +109,15 @@ function App() {
             )
           }
         />
-  <Route
-    path="/adminpage/orders"
-    element={ <ViewOrders/>} />
+        <Route
+          path="/adminpage/orders"
+          element={
+            localStorage.getItem("token") ? (
+              <ViewOrders onLogout={handleLogout} /> ) : (
+                <Navigate to="/login"/>
+              )
+            } />
+              
         <Route
           path="/kategori/:category"
           element={
