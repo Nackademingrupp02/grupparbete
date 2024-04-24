@@ -11,8 +11,9 @@ import {
   ListGroupItem,
 } from "react-bootstrap";
 
-const Product = ({ product, buying, setBuying,  show, setShow}) => {
+const Product = ({ product, buying, setBuying, show, setShow }) => {
   const [modalShow, setModalShow] = useState(false);
+
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal
@@ -79,22 +80,26 @@ const Product = ({ product, buying, setBuying,  show, setShow}) => {
   };
 
   const addToBuying = (item) => {
-    console.log("in products cart addToBuying");
-    item.amount = 1;
-
     let isPresent = false;
-    buying.forEach((product) => {
-      if (item._id === product._id) isPresent = true;
+    const updatedBuying = buying.map((product) => {
+      if (item._id === product._id ) {
+        isPresent = true;
+        return { ...product, amount: product.amount + 1};
+      }
+      return product;
     });
-    if (isPresent) {
-      //can add so you get an warning when user adding same product in cart
-      // setWarning(true);
-      // setTimeout(() => {
-      //   setWarning(false);
-      // }, 2000);
-      return;
+    if (!isPresent) {
+      item.amount = 1;
+      updatedBuying.push(item);
     }
-    setBuying([...buying, item]);
+
+    setBuying(updatedBuying);
+    updateSessionStorage(updatedBuying);
+    setShow(true);
+   };
+
+  const updateSessionStorage = (items) => {
+    sessionStorage.setItem("Items", JSON.stringify(items));
   };
 
   return (
@@ -128,7 +133,8 @@ const Product = ({ product, buying, setBuying,  show, setShow}) => {
                 variant="danger"
                 className="px-4"
                 size="lg"
-                onClick={() => addToBuying(product)}>
+                onClick={() => addToBuying(product)}
+              >
                 Köp
               </Button>
             </Card.Body>
