@@ -6,6 +6,8 @@ import HeaderAdmin from './HeaderAdmin.jsx';
 
 const AdminPage = () => {
   const [orders, setOrders] = useState([]);
+  const [displayOrders, setDisplayOrders] = useState([]);
+  const [orderCount, setOrderCount] = useState(0)
 
   axios.defaults.baseURL = "https://grupparbete.onrender.com";
 
@@ -13,6 +15,7 @@ const AdminPage = () => {
     axios.get('/order/all')
       .then(response => {
         setOrders(response.data);
+        setDisplayOrders(response.data.slice(0, 5))
       })
       .catch(error => {
         console.error('Error fetching orders:', error);
@@ -51,6 +54,13 @@ const AdminPage = () => {
     };
     return new Date(date).toLocaleString('en-US', options);
   };
+
+  function loadMoreOrders() {
+    const additionalOrders = orders.slice(orderCount, orderCount + 5);
+    setDisplayOrders(prevOrders => [...prevOrders, ...additionalOrders]);
+    setOrderCount(prevCount => prevCount + 5);
+  }
+
   return (
     <>
     <HeaderAdmin/>
@@ -68,7 +78,7 @@ const AdminPage = () => {
           </tr>
         </thead>
         <tbody>
-          {orders.map(order => (
+          {displayOrders.map(order => (
             <tr key={order.id}>
               <td>{order.fullName}</td>
               <td>{order.address}</td>
@@ -96,6 +106,9 @@ const AdminPage = () => {
           ))}
         </tbody>
       </table>
+      {orderCount < orders.length && (
+        <button onClick={loadMoreOrders}>Ladda mer ordrar</button>
+      )}
     </div>
     </>
   );
