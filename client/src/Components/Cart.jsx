@@ -1,57 +1,46 @@
 import { useEffect, useState } from "react";
 
 const Cart = (props) => {
-  const { buying, setBuying, setCheckout, setShow, show , cart} = props;
+  const { buying, setBuying, setShow, show, cart } = props;
   const [price, setPrice] = useState(0);
 
-  //adding sum of the carts item
-  const handlePrice = () => {
-    let ans = 0;
-    buying.map((item) => {
-      ans += item.price * item.amount;
-    });
-    setPrice(ans);
+  const updateSessionStorage = (items) => {
+    sessionStorage.setItem("Items", JSON.stringify(items));
   };
 
-  const handleChange = (item, d) => {
-    let ind = -1;
-    buying.forEach((data, index) => {
-      if (data._id === item._id) {
-        console.log("its working");
-        return (ind = index);
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    buying.forEach((item) => {
+      totalPrice += item.price * item.amount;
+    });
+    setPrice(totalPrice);
+  };
+
+  const handleChange = (item, action) => {
+    const updatedBuying = buying.map((cartItem) => {
+      if (cartItem._id === item._id) {
+        const updatedAmount =
+          action === "+" ? cartItem.amount + 1 : cartItem.amount - 1;
+        return { ...cartItem, amount: updatedAmount };
       }
+      return cartItem;
     });
 
-    const tempArr = buying;
-    if (d === "+") {
-      console.log(tempArr);
-      console.log("add one amount");
-      tempArr[ind].amount += 1;
-    } else if (d === "-") {
-      console.log(tempArr);
-      console.log("remove one amount");
-
-      tempArr[ind].amount -= 1;
-    } else {
-      console.log("Something went wrong in handlechange(cart)");
-    }
-
-    if (tempArr[ind].amount === 0) {
-      tempArr[ind].amount = 1;
-    }
-    setBuying([...tempArr]);
+    setBuying(updatedBuying);
+    calculateTotalPrice();
+    updateSessionStorage(updatedBuying);
   };
 
-  //remove cart item
   const handleRemove = (id) => {
-    const arr = buying.filter((item) => item._id !== id);
-    setBuying(arr);
-    // handlePrice()
+    const updatedBuying = buying.filter((item) => item._id !== id);
+    setBuying(updatedBuying);
+    calculateTotalPrice();
+    updateSessionStorage(updatedBuying);
   };
+
   useEffect(() => {
-    handlePrice();
-  });
-  //cart to checkout useing localstorage
+    calculateTotalPrice();
+  }, [buying]);
 
   function checkoutLS(buying) {
     sessionStorage.setItem("Items", JSON.stringify(buying));
@@ -66,7 +55,8 @@ const Cart = (props) => {
         className="cartHolder"
         onClick={() => {
           setShow(!show);
-        }}>
+        }}
+      >
         <span className="cartItems">{cart}</span>
         <span className="CartIcon"> Varukorg </span>
       </div>
@@ -95,23 +85,21 @@ const Cart = (props) => {
           <span>pris: {price.toFixed(2)} kr</span>
           <div className="cartBtn">
             <button
-            
-              
               onClick={() => {
-                if(buying.length > 0){
-                  return checkoutLS(buying)
+                if (buying.length > 0) {
+                  checkoutLS(buying);
+                } else {
+                  alert("Din varukorg är tom");
                 }
-                else{
-                  alert('Din varukorg är tom')
-                }
-              }}>
+              }}
+            >
               Till kassan
             </button>
             <button
-           
               onClick={() => {
                 setShow(false);
-              }}>
+              }}
+            >
               Stäng
             </button>
           </div>
@@ -120,4 +108,5 @@ const Cart = (props) => {
     </div>
   );
 };
+
 export default Cart;
