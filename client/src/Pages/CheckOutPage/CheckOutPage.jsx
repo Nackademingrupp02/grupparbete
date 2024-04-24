@@ -1,16 +1,16 @@
-import "../../App.css"
+import './CheckOutStyling.css';
 import React, { useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const CheckoutPage = (props) => {
-  const {setShowCart} = props
-  setShowCart(false)
-  
+  const { setShowCart } = props;
+  setShowCart(false);
+
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({ name: '', address: '', phone: '', email: '' });
-  
+
   useEffect(() => {
     const storedItems = sessionStorage.getItem('Items');
     if (storedItems) {
@@ -21,17 +21,18 @@ const CheckoutPage = (props) => {
       setTotalPrice(totalPrice);
     }
   }, []);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
       const productsData = cartItems.map(item => ({
         name: item.name,
-        amount : item.amount,
+        amount: item.amount,
         price: item.price
       }));
 
@@ -43,7 +44,7 @@ const CheckoutPage = (props) => {
         phone: formData.phone,
         email: formData.email
       };
-  
+
       console.log('Order data:', orderData);
 
       const response = await fetch('https://grupparbete.onrender.com/order/add', {
@@ -67,35 +68,44 @@ const CheckoutPage = (props) => {
       console.error('Error submitting order:', error.message);
     }
   };
+
   return (
-    <div>
+    <div className="checkout-container">
       <h1>Din kassa</h1>
-      <ul>
-        {cartItems.map((item, index) => (
-          <li key={index}>
-            <h2>{item.name}</h2>
-            <img
-                src={item.picture}
-                style={{
-                  maxwidth: "10rem",
-                  maxHeight: "10rem",
-                  objectFit: "cover",
-                }}
-              />
-            <p>Pris: {item.price.toFixed(2)}</p>
-            <p>Antal: {item.amount}</p>
-            <p>Total: {(item.price * item.amount).toFixed(2)} kr</p>
-          </li>
-        ))}
-      </ul>
+      <table className="table-container">
+        <thead>
+          <tr>
+            <th>Produkt</th>
+            <th>Bild</th>
+            <th>Pris</th>
+            <th>Antal</th>
+            <th>Totalt</th>
+          </tr>
+        </thead>
+        <tbody>
+          {cartItems.map((item, index) => (
+            <tr key={index}>
+              <td>
+                <h2 className='productName'>{item.name}</h2>
+                </td>
+                <td>
+                <img src={item.picture} alt={item.name} className="product-image" />
+              </td>
+              <td>{item.price.toFixed(2)} kr</td>
+              <td>{item.amount}</td>
+              <td>{(item.price * item.amount).toFixed(2)} kr</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       <h2>Totala Pris: {totalPrice.toFixed(2)} kr</h2>
-      <Link to="/"><button>Tillbaka</button></Link>
+      <Link to="/"><button className="btn btn-secondary">Tillbaka</button></Link>
       {!showForm ? (
-        <button onClick={() => setShowForm(true)}>Fortsätt</button>
+        <button className="btn btn-primary" onClick={() => setShowForm(true)}>Fortsätt</button>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="name">Namn:</label>
+        <form onSubmit={handleSubmit} className="form-container">
+          <div className="form-group">
+            <label htmlFor="name" className="label">Namn:</label>
             <input
               type="text"
               id="name"
@@ -104,10 +114,11 @@ const CheckoutPage = (props) => {
               onChange={handleChange}
               maxLength={50}
               required
+              className="input"
             />
           </div>
-          <div>
-            <label htmlFor="address">Adress:</label>
+          <div className="form-group">
+            <label htmlFor="address" className="label">Adress:</label>
             <input
               type="text"
               id="address"
@@ -116,10 +127,11 @@ const CheckoutPage = (props) => {
               onChange={handleChange}
               maxLength={50}
               required
+              className="input"
             />
           </div>
-            <div>
-            <label htmlFor="phone">Telefon:</label>
+          <div className="form-group">
+            <label htmlFor="phone" className="label">Telefon:</label>
             <input
               type="number"
               id="phone"
@@ -128,11 +140,11 @@ const CheckoutPage = (props) => {
               onChange={handleChange}
               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               required
-              />
-
+              className="input"
+            />
           </div>
-            <div>
-            <label htmlFor="email">E-post:</label>
+          <div className="form-group">
+            <label htmlFor="email" className="label">E-post:</label>
             <input
               type="email"
               id="email"
@@ -140,19 +152,20 @@ const CheckoutPage = (props) => {
               value={formData.email}
               onChange={handleChange}
               required
+              className="input"
             />
           </div>
 
           <p>Levereras till dörren och betalas i efterhand med Swish/kontant vid leverans.</p>
           <br/>
-          <button type="submit">Slutför köp</button>
+          <button type="submit" className="btn btn-primary">Slutför köp</button>
           <div>
             <br></br>
-
           </div>
         </form>
       )}
     </div>
   );
 };
+
 export default CheckoutPage;

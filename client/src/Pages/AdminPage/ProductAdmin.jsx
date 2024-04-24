@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
-import { FaTrashAlt } from 'react-icons/fa'
-import { FaPen } from "react-icons/fa";
+import { FaTrashAlt, FaPen, FaCheck } from 'react-icons/fa'
+import { FaX } from "react-icons/fa6";
 
 const baseURL = "https://grupparbete.onrender.com";
 
@@ -66,6 +66,10 @@ const ProductAdmin = ({ product, categories, index, isAnyProductEditing, setIsAn
     }
   }
 
+  const cancelEdit = () => {
+    setIsEditing(false);
+  }
+
   return (
     <>
       <tbody>
@@ -107,12 +111,18 @@ const ProductAdmin = ({ product, categories, index, isAnyProductEditing, setIsAn
           }} />}</td>
           <td>
             {isEditing ? (
-              <Button variant='danger' onClick={editProduct}>Spara</Button>
+              <>
+              <Button variant='danger' onClick={editProduct}><FaCheck/></Button>
+              <Button variant="secondary" onClick={cancelEdit}><FaX/></Button>
+              </>
             ) : (
+              <>
               <Button variant='danger' onClick={() => handleEditButtonClick()}><FaPen /></Button>
+              <Button onClick={deleteProduct}><FaTrashAlt /></Button>
+              {isDeleted && <p style={{ color: 'green' }}>{product.name} has been deleted.</p>}
+              </>
             )}
-            <Button onClick={deleteProduct}><FaTrashAlt /></Button>
-            {isDeleted && <p style={{ color: 'green' }}>{product.name} has been deleted.</p>}
+
           </td>
         </tr>
       </tbody>
