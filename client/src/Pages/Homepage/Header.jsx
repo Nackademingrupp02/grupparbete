@@ -12,7 +12,6 @@ const Header = (props) => {
         <Link to="/">
           <h1 className="headerLinks">Hakim livs</h1>
         </Link>
-        <Link to="/adminpage">Admin sida</Link>
         {isLoggedIn ? (
           <button onClick={onLogout}>Logga ut</button>
         ) : null}
