@@ -42,7 +42,7 @@ const Product = ({ product, buying, setBuying,  show, setShow}) => {
                   <h2>{product.price.toFixed(2)} kr</h2>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <h3>{product.comparePrice} kr</h3>
+                  <h3>{product.comparePrice}</h3>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <h3>{product.packageSize}</h3>
