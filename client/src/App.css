@@ -24,6 +24,7 @@
   }
   to {
     transform: rotate(360deg);
+    
   }
 }
 
@@ -45,12 +46,16 @@
   text-decoration: none;
 }
 
+
+
+
+/* Cart */
 .CartContainer {
   display: grid;
   overflow-y: scroll;
   justify-content: center;
 
-  position: fixed;
+  position: absolute;
   right: 0px;
   top: 20%;
   width: 350px;
@@ -86,17 +91,15 @@
   background-color: rgba(240, 240, 240, 0.753);
 
   position: absolute;
-  top: 10%;
-right: 0px;
-  height: 8%;
-  width: 8%;
-  border-radius: 50%;
+
+
+  border-radius: 5px;
 
 }
 .cartHolder:hover{
   
   background-color: rgba(99, 99, 99, 0.212)  ;
-  border: 1px solid rgba(133, 133, 133, 0.438);
+  border: 1px solid rgba(170, 57, 57, 0.438);
 }
 .cartItems {
   display: flex;
@@ -104,14 +107,14 @@ right: 0px;
   align-items: center;
 
   position: absolute;
-  left: -20px;
+  left: -10px;
 
   background-color: rgba(4, 134, 156, 0.336);
 
   margin: 5%;
   height: 50%;
   width: 25%;
-  border-radius: 50px;
+  border-radius: 2px;
 }
 
 .CartIcon{

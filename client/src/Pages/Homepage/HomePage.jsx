@@ -7,7 +7,7 @@ import useProductFetcher from "../../Components/ProductFilter";
 import { useNavigate, useParams } from "react-router-dom";
 import PaginationFunction from "../../Components/Pagination.jsx";
 
-const HomePage = ({ categories}) => {
+const HomePage = ({ categories , buying, setBuying,warning, setWarning,show, setShow}) => {
   const navigate = useNavigate();
   const params = useParams();
   const { category } = params;
@@ -15,10 +15,7 @@ const HomePage = ({ categories}) => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(30);
-  const [buying, setBuying] = useState([]);
-  const [warning, setWarning] = useState(false);
 
-  const [show, setShow] =useState(false)
   const { products: filteredProducts } = useProductFetcher(
     filterButton,
     categories

@@ -97,7 +97,7 @@ const GeneratePDF = ({ order }) => {
                     <Text>{product.amount} st</Text>
                   </View>
                   <View style={styles.tableCell}>
-                    <Text>{product.amount * product.price} kr</Text>
+                    <Text>{(product.amount * product.price).toFixed(2)} kr</Text>
                   </View>
                 </View>
               ))}

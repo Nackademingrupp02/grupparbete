@@ -13,6 +13,10 @@ const Cart = (props) => {
     setPrice(ans);
   };
 
+  useEffect(()=>{
+console.log("You are in Cart now");
+console.log(buying);
+  }, [buying])
   const handleChange = (item, d) => {
     let ind = -1;
     buying.forEach((data, index) => {
@@ -67,8 +71,7 @@ const Cart = (props) => {
         onClick={() => {
           setShow(!show);
         }}>
-        <span className="cartItems">{cart}</span>
-        <span className="CartIcon"> Varukorg </span>
+        <span >{cart} Varukorg</span>
       </div>
 
       {show && (

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Product from "../../Components/Product.jsx";
 import ErrorMessage from "../../Components/NoProductError.jsx";
-import Cart from "../../Components/Cart.jsx";
 
 import { Container, Row, Col } from "react-bootstrap";
 
@@ -26,15 +25,8 @@ const Main = ({ products ,buying,setBuying, setWarning, warning, setShow, show, 
   } else if (products.length === 0) {
     return (
       <main className="main">
-         <Cart
-          buying={buying}
-          setBuying={setBuying}
-          setCheckout = {setCheckout}
-          setShow ={setShow}
-          show ={show}
-          cart={buying.length} warning ={warning}
+        
          
-        />
         <ErrorMessage message="Inga produkter hittades" />
        
       </main>
@@ -42,15 +34,7 @@ const Main = ({ products ,buying,setBuying, setWarning, warning, setShow, show, 
   } else {
     return (
       <main className="main">
-        <Cart
-          buying={buying}
-          setBuying={setBuying}
-          setCheckout = {setCheckout}
-          setShow ={setShow}
-          show ={show}
-          cart={buying.length} warning ={warning}
-         
-        />
+       
         <Container className="products">
           <Row>
             {products.map((product, index) => (
