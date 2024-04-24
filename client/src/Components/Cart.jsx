@@ -55,10 +55,8 @@ const Cart = (props) => {
         className="cartHolder"
         onClick={() => {
           setShow(!show);
-        }}
-      >
-        <span className="cartItems">{cart}</span>
-        <span className="CartIcon"> Varukorg </span>
+        }}>
+        <span >{cart} Varukorg</span>
       </div>
 
       {show && (

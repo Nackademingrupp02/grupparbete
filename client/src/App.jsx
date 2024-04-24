@@ -90,6 +90,8 @@ function App() {
         warning={warning}
         setShow={setShow}
         show={show}
+        buying ={buying}
+        setBuying={setBuying}
       />
       <Routes>
         <Route
