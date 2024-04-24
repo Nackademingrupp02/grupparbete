@@ -7,6 +7,7 @@ import Table from 'react-bootstrap/Table';
 
 const MainAdmin = ({ products, categories }) => {
 
+    const [isAnyProductEditing, setIsAnyProductEditing] = useState(false)
     const [sortProducts, setSortProducts] = useState([])
     const [sortKey, setSortKey] = useState('')
 
@@ -39,7 +40,7 @@ const MainAdmin = ({ products, categories }) => {
 
     }
 
-    //kategories blir fucked up
+
 
     return (
         <>
@@ -64,7 +65,7 @@ const MainAdmin = ({ products, categories }) => {
                         {sortProducts && sortProducts.map((product, index) => {
                             return (
                                 <>
-                                    <ProductAdmin  {...{ product, index, categories }} />
+                                    <ProductAdmin  {...{ product, index, categories, isAnyProductEditing, setIsAnyProductEditing}} />
                                 </>
                             )
                         })}
