@@ -23,14 +23,40 @@ const AdminPage = ({ categories }) => {
 
   const handleAddProduct = async (e) => {
     console.log(addProduct);
-    alert(`${addProduct.name} added.`)
     try {
+      if (
+        !addProduct.name ||
+        !addProduct.price ||
+        !addProduct.packageSize ||
+        !addProduct.comparePrice ||
+        !addProduct.brand ||
+        !addProduct.description ||
+        !addProduct.ingredients ||
+        !addProduct.picture ||
+        !addProduct.category
+      ) {
+        alert('Vänligen fyll i alla fält');
+        return;
+      }
       const response = await axios.post(baseURL + "/product/add",
         JSON.stringify(addProduct),
         { headers: { "Content-type": "application/json" } }
       )
       if (response.status === 201) {
         console.log("Product added.");
+        setAddProduct({
+          name: "",
+          price: "",
+          packageSize: "",
+          comparePrice: "",
+          brand: "",
+          description: "",
+          ingredients: "",
+          picture: "",
+          category: "",
+        })
+        alert(`${addProduct.name} added.`)
+        
       }
     }
     catch (err) {

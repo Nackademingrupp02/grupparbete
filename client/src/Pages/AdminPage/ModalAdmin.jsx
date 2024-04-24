@@ -24,14 +24,14 @@ const ModalAdmin = ({ setAddProductBtn, categoryList, addProduct, setAddProduct,
 
             <Modal.Header>
               <Modal.Title>Add product</Modal.Title>
-            </Modal.Header>
+            </Modal.Header> 
 
             <Modal.Body>
-              <div className='addProductInputs'>
-                <label htmlFor="addProductName">Namn</label>
-                <input type="text" id="addProductName" value={addProduct.value} onChange={(e) => {
-                  setAddProduct({ ...addProduct, name: e.target.value })
-                }} />
+                <div className='addProductInputs'>
+                  <label htmlFor="addProductName">Namn</label>
+                  <input type="text" id="addProductName" value={addProduct.value} onChange={(e) => {
+                    setAddProduct({ ...addProduct, name: e.target.value }); 
+                  }} />
 
                 <label htmlFor="addProductPrice">Pris</label>
                 <input type="number" id="addProductPrice" value={addProduct.price} onChange={(e) => {
