@@ -1,5 +1,6 @@
 import "../../App.css"
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 
 const CheckoutPage = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -54,6 +55,8 @@ const CheckoutPage = () => {
         throw new Error('Failed to submit order');
       }
 
+      sessionStorage.removeItem('Items');
+
       window.location.href = '/confirmation';
 
       console.log('Order submitted successfully');
@@ -83,6 +86,7 @@ const CheckoutPage = () => {
         ))}
       </ul>
       <h2>Totala Pris: {totalPrice.toFixed(2)} kr</h2>
+      <Link to="/"><button>Tillbaka</button></Link>
       {!showForm ? (
         <button onClick={() => setShowForm(true)}>Fortsätt</button>
       ) : (

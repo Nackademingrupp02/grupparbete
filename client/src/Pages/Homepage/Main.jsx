@@ -9,6 +9,14 @@ const Main = ({ products ,buying,setBuying, setWarning, warning, setShow, show, 
 
   const [checkout, setCheckout] = useState([])
 
+  useEffect(() => {
+    const storedItems = sessionStorage.getItem("Items");
+    if (storedItems) {
+      const parsedItems = JSON.parse(storedItems);
+      setBuying(parsedItems);
+    }
+  }, []);
+
   if (!Array.isArray(products)) {
     return (
       <main className="main">
