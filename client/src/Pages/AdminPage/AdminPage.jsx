@@ -44,17 +44,7 @@ const AdminPage = ({ categories }) => {
       )
       if (response.status === 201) {
         console.log("Product added.");
-        setAddProduct({
-          name: "",
-          price: "",
-          packageSize: "",
-          comparePrice: "",
-          brand: "",
-          description: "",
-          ingredients: "",
-          picture: "",
-          category: "",
-        })
+        
         alert(`${addProduct.name} added.`)
         
         window.location.reload();
