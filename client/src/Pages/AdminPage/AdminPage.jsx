@@ -57,6 +57,7 @@ const AdminPage = ({ categories }) => {
         })
         alert(`${addProduct.name} added.`)
         
+        window.location.reload();
       }
     }
     catch (err) {
