@@ -31,6 +31,7 @@ const AdminPage = ({ categories }) => {
       )
       if (response.status === 201) {
         console.log("Product added.");
+        window.location.reload();
       }
     }
     catch (err) {
