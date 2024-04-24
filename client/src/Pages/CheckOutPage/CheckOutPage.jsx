@@ -2,12 +2,15 @@ import "../../App.css"
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 
-const CheckoutPage = () => {
+const CheckoutPage = (props) => {
+  const {setShowCart} = props
+  setShowCart(false)
+  
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({ name: '', address: '', phone: '', email: '' });
-
+  
   useEffect(() => {
     const storedItems = sessionStorage.getItem('Items');
     if (storedItems) {

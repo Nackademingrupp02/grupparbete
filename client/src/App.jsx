@@ -22,6 +22,7 @@ function App() {
   const [buying, setBuying] = useState([]);
   const [warning, setWarning] = useState(false);
   const [show, setShow] = useState(false);
+  const [showCart, setShowCart] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -79,8 +80,6 @@ function App() {
     setFilterButton(string);
   }
 
-
-
   return (
     <>
       <Header
@@ -90,14 +89,30 @@ function App() {
         warning={warning}
         setShow={setShow}
         show={show}
-        buying ={buying}
+        buying={buying}
         setBuying={setBuying}
+        showCart={showCart}
+        setShowCart={setShowCart}
       />
       <Routes>
         <Route
           path="/"
           element={
-            <HomePage {...{ filterHandler, categories, filterProducts, buying, setBuying,warning, setWarning,show, setShow}} />
+            <HomePage
+              {...{
+                filterHandler,
+                categories,
+                filterProducts,
+                buying,
+                setBuying,
+                warning,
+                setWarning,
+                show,
+                setShow,
+                setShowCart,
+                showCart,
+              }}
+            />
           }
         />
         <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
@@ -115,15 +130,31 @@ function App() {
           path="/adminpage/orders"
           element={
             localStorage.getItem("token") ? (
-              <ViewOrders onLogout={handleLogout} /> ) : (
-                <Navigate to="/login"/>
-              )
-            } />
-              
+              <ViewOrders onLogout={handleLogout} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+
         <Route
           path="/kategori/:category"
           element={
-            <HomePage {...{ filterHandler, categories, filterProducts }} />
+            <HomePage
+              {...{
+                filterHandler,
+                categories,
+                filterProducts,
+                buying,
+                setBuying,
+                warning,
+                setWarning,
+                show,
+                setShow,
+                setShowCart,
+                showCart,
+              }}
+            />
           }
         />
         <Route
@@ -133,10 +164,21 @@ function App() {
               filterProducts={filterProducts}
               categories={categories}
               filterHandler={() => filterHandler("Alla")}
+              buying={buying}
+              setBuying={setBuying}
+              warning={warning}
+              setWarning={setWarning}
+              show={show}
+              setShow={setShow}
+              showCart={showCart}
+              setShowCart={setShowCart}
             />
           }
         />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="/checkout"
+          element={<Checkout showCart={showCart} setShowCart={setShowCart} />}
+        />
         <Route path="/confirmation" element={<ConfirmationPage />} />
       </Routes>
     </>

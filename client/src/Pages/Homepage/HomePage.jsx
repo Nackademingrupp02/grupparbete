@@ -7,7 +7,8 @@ import useProductFetcher from "../../Components/ProductFilter";
 import { useNavigate, useParams } from "react-router-dom";
 import PaginationFunction from "../../Components/Pagination.jsx";
 
-const HomePage = ({ categories , buying, setBuying,warning, setWarning,show, setShow}) => {
+const HomePage = ({ categories , buying, setBuying,warning, setWarning,show, setShow ,showCart, setShowCart }) => {
+  setShowCart(true)
   const navigate = useNavigate();
   const params = useParams();
   const { category } = params;
@@ -89,6 +90,7 @@ const HomePage = ({ categories , buying, setBuying,warning, setWarning,show, set
           </Col>
           <Col style={{ minHeight: "100vh" }}>
             <Main products={currentPosts} setBuying={setBuying} buying={buying} warning ={warning} setWarning ={setWarning} setShow ={setShow} show ={show}/>
+
             <PaginationFunction
               totalposts={filteredProducts.length}
               postsPerPage={postsPerPage}
