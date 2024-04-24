@@ -104,48 +104,52 @@ const Product = ({ product, buying, setBuying, show, setShow }) => {
 
   return (
     <>
-      <Container>
-        <Row>
-          <Card style={{ textAlign: "center" }}>
-            <Card.Img
-              onClick={handleModal}
-              variant="top"
-              src={product.picture}
-              style={{
-                objectFit: "contain",
-                maxWidth: "240px",
-                maxHeight: "240px",
-                minHeight: "240px",
+  <div onClick={handleModal}>
+    <Container>
+      <Row>
+        <Card style={{ textAlign: "center" }}>
+          <Card.Img
+            variant="top"
+            src={product.picture}
+            style={{
+              objectFit: "contain",
+              maxWidth: "240px",
+              maxHeight: "240px",
+              minHeight: "240px",
+            }}
+          />
+          <Card.Body>
+            <Card.Title>{product.name}</Card.Title>
+          </Card.Body>
+          <ListGroup className="list-group-flush">
+            <ListGroup.Item>{product.price.toFixed(2)} kr</ListGroup.Item>
+            <ListGroup.Item>{product.comparePrice}</ListGroup.Item>
+            <ListGroup.Item>
+              {product.brand} | {product.packageSize}
+            </ListGroup.Item>
+          </ListGroup>
+          <Card.Body>
+            <Button
+              variant="danger"
+              className="px-4"
+              size="lg"
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent modal from opening when clicking the button
+                addToBuying(product);
               }}
-            />
-            <Card.Body>
-              <Card.Title>{product.name}</Card.Title>
-            </Card.Body>
-            <ListGroup className="list-group-flush">
-              <ListGroup.Item>{product.price.toFixed(2)} kr</ListGroup.Item>
-              <ListGroup.Item>{product.comparePrice}</ListGroup.Item>
-              <ListGroup.Item>
-                {product.brand} | {product.packageSize}
-              </ListGroup.Item>
-            </ListGroup>
-            <Card.Body>
-              <Button
-                variant="danger"
-                className="px-4"
-                size="lg"
-                onClick={() => addToBuying(product)}
-              >
-                Köp
-              </Button>
-            </Card.Body>
-          </Card>
-        </Row>
-      </Container>
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
-    </>
+            >
+              Köp
+            </Button>
+          </Card.Body>
+        </Card>
+      </Row>
+    </Container>
+  </div>
+  <MyVerticallyCenteredModal
+    show={modalShow}
+    onHide={() => setModalShow(false)}
+  />
+</>
   );
 };
 
