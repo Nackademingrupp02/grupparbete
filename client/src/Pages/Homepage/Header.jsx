@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Cart from "../../Components/Cart"
-
 const Header = (props) => {
-  const {cart, warning, setShow, show ,onLogout, isLoggedIn ,setBuying, buying} = props
+
+  const {cart, warning, setShow, show ,onLogout, isLoggedIn ,setBuying, buying ,showCart,setShowCart} = props
   return (
     <>
       <header>
@@ -15,7 +15,7 @@ const Header = (props) => {
         {isLoggedIn ? (
           <button onClick={onLogout}>Logga ut</button>
         ) : null}
-        <Cart buying={buying} setBuying={setBuying} cart={cart} setShow={setShow} show={show}/>
+        {showCart ?<Cart buying={buying} setBuying={setBuying} cart={cart} setShow={setShow} show={show}/> :console.log("dont show in checkout") }
       </nav>
        
       </header>

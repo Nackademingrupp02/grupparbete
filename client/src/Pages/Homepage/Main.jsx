@@ -4,7 +4,7 @@ import ErrorMessage from "../../Components/NoProductError.jsx";
 
 import { Container, Row, Col } from "react-bootstrap";
 
-const Main = ({ products ,buying,setBuying, setWarning, warning, setShow, show, cart}) => {
+const Main = ({ products ,buying,setBuying,setShow, show, cart}) => {
 
   const [checkout, setCheckout] = useState([])
 
