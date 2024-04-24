@@ -95,7 +95,7 @@ const Product = ({ product, buying, setBuying, show, setShow }) => {
 
     setBuying(updatedBuying);
     updateSessionStorage(updatedBuying);
-    setShow(true);
+
    };
 
   const updateSessionStorage = (items) => {

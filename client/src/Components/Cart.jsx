@@ -3,17 +3,20 @@ import { useEffect, useState } from "react";
 const Cart = (props) => {
   const { buying, setBuying, setShow, show, cart } = props;
   const [price, setPrice] = useState(0);
-
+  const [cartItemAmount, setCartItemAmount] = useState(0)
   const updateSessionStorage = (items) => {
     sessionStorage.setItem("Items", JSON.stringify(items));
   };
 
   const calculateTotalPrice = () => {
     let totalPrice = 0;
+    let totalAmount = 0
     buying.forEach((item) => {
       totalPrice += item.price * item.amount;
+      totalAmount += item.amount
     });
     setPrice(totalPrice);
+    setCartItemAmount(totalAmount)
   };
 
   const handleChange = (item, action) => {
@@ -56,50 +59,63 @@ const Cart = (props) => {
         onClick={() => {
           setShow(!show);
         }}>
-        <span >{cart} Varukorg</span>
+        <span>{cartItemAmount} Varukorg</span>
       </div>
 
       {show && (
         <div className="CartContainer">
-          <p>{buying.length}</p>
-          {buying.map((bought, index) => {
-            return (
-              <div key={index} className="Item">
-                <p>{bought.name}</p>
-                <p>{bought.price.toFixed(2)} Kr</p>
-
-                <button onClick={() => handleChange(bought, "-")}>-</button>
-                <span>Antal: {bought.amount}</span>
-                <button onClick={() => handleChange(bought, "+")}>+</button>
-
-                <button onClick={() => handleRemove(bought._id)}>
-                  ta bort
-                </button>
-              </div>
-            );
-          })}
-
-          <span>Total pris av din varukorg </span>
-          <span>pris: {price.toFixed(2)} kr</span>
-          <div className="cartBtn">
+          <div className="cart_Top">
+            <div>Varukorg({cartItemAmount} produkter)</div>{" "}
             <button
-              onClick={() => {
-                if (buying.length > 0) {
-                  checkoutLS(buying);
-                } else {
-                  alert("Din varukorg är tom");
-                }
-              }}
-            >
-              Till kassan
-            </button>
-            <button
+              className="closeCart"
               onClick={() => {
                 setShow(false);
-              }}
-            >
-              Stäng
+              }}>
+              X
             </button>
+          </div>
+          <div className="itemConianer">
+            {buying.map((bought, index) => {
+              return (
+                <div key={index} className="Item">
+                  <p>
+                    {bought.name} {bought.price.toFixed(2)} Kr
+                  </p>
+
+                  <div className="cartAmount">
+                    <button onClick={() => handleChange(bought, "-")}>-</button>
+                    <div className="cartQuantity">{bought.amount}</div>
+                    <button onClick={() => handleChange(bought, "+")}>+</button>
+                  </div>
+
+                  <button
+                    onClick={() => handleRemove(bought._id)}
+                    className="itemRemove_Cart">
+                    ta bort
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="cartBottom">
+            <span>
+              {" "}
+              <p>Total</p> <p>{price.toFixed(2)} kr</p>{" "}
+            </span>
+
+            <div className="cartBtn">
+              <button
+                onClick={() => {
+                  if (buying.length > 0) {
+                    checkoutLS(buying);
+                  } else {
+                    alert("Din varukorg är tom");
+                  }
+                }}>
+                Till kassan
+              </button>
+            </div>
           </div>
         </div>
       )}
