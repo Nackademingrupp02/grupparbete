@@ -24,6 +24,10 @@ const Cart = (props) => {
       if (cartItem._id === item._id) {
         const updatedAmount =
           action === "+" ? cartItem.amount + 1 : cartItem.amount - 1;
+          if(cartItem.amount == 1 && action == "-") {
+            cartItem.amount = 1
+           return updatedAmount = cartItem.amount
+          }
         return { ...cartItem, amount: updatedAmount };
       }
       return cartItem;
@@ -59,7 +63,7 @@ const Cart = (props) => {
         onClick={() => {
           setShow(!show);
         }}>
-        <span>{cartItemAmount} Varukorg</span>
+        <span>{cart} Varukorg</span>
       </div>
 
       {show && (
