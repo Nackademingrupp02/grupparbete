@@ -6,10 +6,15 @@ import { FaPen } from "react-icons/fa";
 
 const baseURL = "https://grupparbete.onrender.com";
 
-const ProductAdmin = ({ product, categories, index }) => {
+const ProductAdmin = ({ product, categories, index, isAnyProductEditing, setIsAnyProductEditing }) => {
   const [isDeleted, setIsDeleted] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editedProduct, setEditedProduct] = useState({ ...product });
+
+
+  useEffect(() => {
+    setIsAnyProductEditing(isEditing);
+  }, [isEditing])
 
   const editProduct = async () => {
     try {
@@ -52,7 +57,14 @@ const ProductAdmin = ({ product, categories, index }) => {
   }
 
 
-
+  const handleEditButtonClick = () => {
+    if (!isAnyProductEditing) {
+      setIsEditing(true)
+    }
+    else {
+      alert('En annan produkt håller redan på att redigeras. Spara eller avbryt redigeringen av produkten först.')
+    }
+  }
 
   return (
     <>
@@ -89,15 +101,15 @@ const ProductAdmin = ({ product, categories, index }) => {
             </>
           )}</td>
           <td>{isEditing ? <input type='text' name="picture" value={editedProduct.picture} onChange={handleInputChange} /> : <img src={product.picture} style={{
-                  maxwidth: "3rem",
-                  maxHeight: "3rem",
-                  objectFit: "cover",
-                }} />}</td>
+            maxwidth: "3rem",
+            maxHeight: "3rem",
+            objectFit: "cover",
+          }} />}</td>
           <td>
             {isEditing ? (
               <Button variant='danger' onClick={editProduct}>Spara</Button>
             ) : (
-              <Button variant='danger' onClick={() => setIsEditing(true)}><FaPen /></Button>
+              <Button variant='danger' onClick={() => handleEditButtonClick()}><FaPen /></Button>
             )}
             <Button onClick={deleteProduct}><FaTrashAlt /></Button>
             {isDeleted && <p style={{ color: 'green' }}>{product.name} has been deleted.</p>}
