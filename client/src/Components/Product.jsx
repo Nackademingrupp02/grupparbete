@@ -67,7 +67,7 @@ const Product = ({ product, buying, setBuying,  show, setShow}) => {
           </ListGroup>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Stäng</Button>
+          <button onClick={props.onHide} >Stäng</button>
         </Modal.Footer>
       </Modal>
     );
@@ -78,6 +78,7 @@ const Product = ({ product, buying, setBuying,  show, setShow}) => {
   };
 
   const addToBuying = (item) => {
+    console.log("in products cart addToBuying");
     item.amount = 1;
 
     let isPresent = false;
@@ -126,7 +127,7 @@ const Product = ({ product, buying, setBuying,  show, setShow}) => {
                 variant="danger"
                 className="px-4"
                 size="lg"
-                onClick={() => (addToBuying(product), setShow(true))}>
+                onClick={() => addToBuying(product)}>
                 Köp
               </Button>
             </Card.Body>
