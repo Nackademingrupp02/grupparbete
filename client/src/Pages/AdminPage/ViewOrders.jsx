@@ -38,7 +38,19 @@ const AdminPage = () => {
       console.error('Error updating orderstatus: ', error);
     }
   };
-
+  const formatDate = (date) => {
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      hour12: false,
+      timeZone: 'Europe/Stockholm',
+    };
+    return new Date(date).toLocaleString('en-US', options);
+  };
   return (
     <>
     <HeaderAdmin/>
@@ -51,7 +63,8 @@ const AdminPage = () => {
             <th>Adress</th>
             <th>Produkter</th>
             <th>Status</th>
-            <th></th>
+            <th>Skapad</th>
+            <th>Faktura</th>
           </tr>
         </thead>
         <tbody>
@@ -75,8 +88,10 @@ const AdminPage = () => {
                   <option value="Betald">Betald</option>
                 </select>
                 </td>
+                <td>{formatDate(order.createdAt)}</td>
                 <td><GeneratePDF order={order} />
               </td>
+              
             </tr>
           ))}
         </tbody>
