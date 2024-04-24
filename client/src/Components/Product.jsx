@@ -67,6 +67,7 @@ const Product = ({ product, buying, setBuying,  show, setShow}) => {
           </ListGroup>
         </Modal.Body>
         <Modal.Footer>
+          <button onClick={() => addToBuying(product)}>Köp</button>
           <button onClick={props.onHide} >Stäng</button>
         </Modal.Footer>
       </Modal>
