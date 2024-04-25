@@ -4,7 +4,7 @@ const ProductsSchema = new mongoose.Schema({
   name: {
     type: String,
     minlength: 2,
-    maxLength: 75,
+    maxLength: 50,
     required: true,
     match: /[a-zA-Z0-9\s]+[a-zA-Z0-9]+/,
     trim: true,
@@ -19,16 +19,22 @@ const ProductsSchema = new mongoose.Schema({
   },
   packageSize: {
     type: String,
+    minlength: 1,
+    maxLength: 10,
     required: true,
     match: /[a-zA-Z0-9\s]+[a-zA-Z0-9]+/,
   },
   comparePrice: {
     type: String,
+    minlength: 1,
+    maxLength: 15,
     required: true,
     match: /[a-zA-Z0-9\s]+[a-zA-Z0-9]+/,
   },
   brand: {
     type: String,
+    minlength: 1,
+    maxLength: 30,
     required: true,
     match: /[a-zA-Z0-9\s]+[a-zA-Z0-9]+/,
   },
