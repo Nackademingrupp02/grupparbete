@@ -80,6 +80,17 @@ const Product = ({ product, buying, setBuying, show, setShow }) => {
   };
 
   const addToBuying = (item) => {
+    const cartButton  = document.getElementById("cartHolder")
+    console.log(cartButton );
+    cartButton.style.backgroundColor = "red"
+
+    setTimeout(() => {
+      cartButton.style.backgroundColor = "rgba(240, 240, 240, 0.753)"
+    }, 1000);
+    
+    
+
+    //skriv timeout sen :) (från Alexander)
     let isPresent = false;
     const updatedBuying = buying.map((product) => {
       if (item._id === product._id ) {
@@ -95,7 +106,8 @@ const Product = ({ product, buying, setBuying, show, setShow }) => {
 
     setBuying(updatedBuying);
     updateSessionStorage(updatedBuying);
-
+    
+  
    };
 
   const updateSessionStorage = (items) => {
@@ -129,7 +141,7 @@ const Product = ({ product, buying, setBuying, show, setShow }) => {
             </ListGroup.Item>
           </ListGroup>
           <Card.Body>
-            <Button
+            <Button 
               variant="danger"
               className="px-4"
               size="lg"

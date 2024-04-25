@@ -49,6 +49,7 @@
 
 .cartHolder {
   display: flex;
+  right: 10px;
 
   justify-content: center;
   align-items: center;
@@ -75,11 +76,9 @@
   background-color: white;
   width: 400px;
   height: 80vh;
-  
 }
 
-
-.cart_Top{
+.cart_Top {
   position: relative;
   height: 7%;
   border: 0.5px solid rgb(255, 89, 117);
@@ -97,10 +96,10 @@
   right: 0px;
   top: 0px;
 
-  height: 100%;
+  height: 95%;
 }
 .cart_Top div {
-  margin: 0px 0px 0px 5% ;
+  margin: 0px 0px 0px 5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,48 +110,49 @@
 
   height: 100%;
 }
-.cartBottom{
-
+.cartBottom {
   position: absolute;
   bottom: 0px;
   width: 100%;
-  border-top: 1px solid rgba(180, 180, 180, 0.774);
-
+  border: 0.5px solid black;
+  z-index: 2;
+  height: 10%;
+  background-color: white;
 }
-.cartBottom span{
+.cartBottom span {
   display: flex;
   gap: 70%;
 }
-.cartBtn{
+.cartBtn {
   position: relative;
-  right: -8vw;
+  right: -34%;
+  top: -0.5vh;
 }
 
-.itemConianer{
-  height: 60vh;
+.itemConianer {
   position: relative;
-  left: 1.5vw;
   justify-content: center;
   overflow-y: scroll;
   overflow-x: hidden;
+  column-gap: 0px;
+  height: 83%;
 }
- .Item{
-  margin: 10px 50px 0px 0px ;
-  
-  width: 350px;
+.Item {
+  margin: 10px 50px 0px 10%;
+
+  width: 325px;
   height: 100px;
   border: 1px solid black;
 }
 
-.cartAmount{
+.cartAmount {
   display: flex;
   position: relative;
-  left: 62%;
-  top: 10%;
+  bottom: -5px;
 }
-.cartAmount button{
+.cartAmount button {
   display: grid;
-  
+
   width: 40px;
   height: 40px;
 }
@@ -162,10 +162,22 @@
   font-size: x-large;
   border: 2px solid rgb(255, 0, 0);
   border-radius: 3px;
-  
 }
-.itemRemove_Cart{
+.itemRemove_Cart {
   position: relative;
-  left: -35%;
-  top: -35%;
 }
+.bottomItem {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 100px;
+
+  position: relative;
+  bottom: 30px;
+}
+
+@media screen and (min-width: 1920px) and (min-height: 1080px) {
+  .itemConianer {
+    height: 85%;
+  }
+}
+
