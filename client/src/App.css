@@ -71,17 +71,17 @@
   right: 0px;
   top: 10vh;
   z-index: 1;
-
+height: 600px;
   border: 1px solid black;
   background-color: white;
   width: 400px;
-  height: 80vh;
 }
 
 .cart_Top {
   position: relative;
-  height: 7%;
+  height: 60px;
   border: 0.5px solid rgb(255, 89, 117);
+
 }
 
 .cart_Top button {
@@ -116,7 +116,7 @@
   width: 100%;
   border: 0.5px solid black;
   z-index: 2;
-  height: 10%;
+  height: 85px;
   background-color: white;
 }
 .cartBottom span {
@@ -126,7 +126,7 @@
 .cartBtn {
   position: relative;
   right: -34%;
-  top: -0.5vh;
+  top: -15%;
 }
 
 .itemConianer {
@@ -181,3 +181,14 @@
   }
 }
 
+
+.footer{
+  margin: 0px;
+  width: 100vw;
+  height: 200px;
+  background-color: red;
+  display: flex;
+  justify-content: space-evenly ;
+  position: absolute;
+  left: 0%;
+}
