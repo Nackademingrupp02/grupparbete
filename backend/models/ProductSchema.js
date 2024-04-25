@@ -40,7 +40,6 @@ const ProductsSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    minlength: 10,
     maxLength: 500,
     match: /[a-zA-Z0-9\s]+[a-zA-Z0-9]+/,
   },
