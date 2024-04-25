@@ -30,8 +30,8 @@ const ModalAdmin = ({ setAddProductBtn, categoryList, addProduct, setAddProduct,
     if (!addProduct.brand || addProduct.brand.length < 1 || addProduct.brand.length > 30) {
       errors.brand = 'Varumärket måste vara mellan 1 och 30 tecken';
     }
-    if (addProduct.description && (addProduct.description.length < 10 || addProduct.description.length > 500)) {
-      errors.description = 'Beskrivningen måste vara mellan 10 och 500 tecken';
+    if (addProduct.description && ( addProduct.description.length > 500)) {
+      errors.description = 'Beskrivningen får ej vara över 500 tecken';
     }
     if (addProduct.ingredients && addProduct.ingredients.length > 500) {
       errors.ingredients = 'Ingredienserna får inte vara längre än 500 tecken';
