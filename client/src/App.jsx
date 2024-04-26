@@ -47,9 +47,11 @@ function App() {
         return true;
       } else {
         console.error("Login failed", response.data.message);
+        alert('Användarnamn eller lösenordet är fel, vänligen försök igen.');
         return false;
       }
     } catch (error) {
+      alert('Användarnamn eller lösenordet är fel, vänligen försök igen.');
       console.error("Error logging in", error);
       return false;
     }

@@ -29,13 +29,9 @@ const AdminPage = ({ categories }) => {
         !addProduct.price ||
         !addProduct.packageSize ||
         !addProduct.comparePrice ||
-        !addProduct.brand ||
-        !addProduct.description ||
-        !addProduct.ingredients ||
-        !addProduct.picture ||
-        !addProduct.category
+        !addProduct.brand
       ) {
-        alert('Vänligen fyll i alla fält');
+        alert('Vänligen fyll i nödvändiga alla fält');
         return;
       }
       const response = await axios.post(baseURL + "/product/add",
@@ -73,8 +69,7 @@ const AdminPage = ({ categories }) => {
 
   return (
     <>
-      {/* <Header /> */}
-      <HeaderAdmin {...{ addProduct, setAddProduct, handleAddProduct }} />
+      <HeaderAdmin isProductPage={true} {...{ addProduct, setAddProduct, handleAddProduct }} />
       <MainAdmin {...{ products, categories }} />
     </>
   )

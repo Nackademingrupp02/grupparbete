@@ -8,8 +8,6 @@ const LoginPage = ({ onLogin }) => {
     e.preventDefault();
 
     console.log('Submitting login form..')
-    console.log('Username:', username);
-    console.log('Password:', password);
 
     onLogin({ username, password });
   };

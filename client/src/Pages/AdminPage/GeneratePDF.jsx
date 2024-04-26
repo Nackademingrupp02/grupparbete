@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   contactSection: {
     marginTop: 20,
     marginBottom: 20,
-    fontSize: 10
+    fontSize: 14
   },
   copyright: {
     marginTop: 20,
@@ -102,17 +102,27 @@ const GeneratePDF = ({ order }) => {
                 </View>
               ))}
             </View>
-            <View>
+            <View style={styles.tableCell}>
             <Text>Totalt: {order.price.toFixed(2)} kr</Text>
             </View>
           </View>
+          <View style={styles.tableCell}>
           <Text>Status: {order.status}</Text>
+          </View>
           <View style={styles.contactSection}>
-            <Text>Kontaktuppgifter</Text>
+            <Text>Kontaktuppgifter Hakim:</Text>
             <Text>Telefonnummer: +46 8 154 355 76</Text>
             <Text>Email: Hakim_livs@gmail.com</Text>
             <Text>Adress: Importörvägen 22, 120 44 Årsta</Text>
           </View>
+          <View style={styles.contactSection}>
+            <Text>
+              Levereras till dörren och betalas i efterhand med Swish/kontant vid leverans.
+            </Text>
+            <Text>
+              Swish till: +46 8 154 35576
+            </Text>
+            </View>
           <Text style={styles.copyright}>Hakim Livs - 2024</Text>
         </View>
       </Page>
