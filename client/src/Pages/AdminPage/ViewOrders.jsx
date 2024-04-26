@@ -63,7 +63,7 @@ const AdminPage = () => {
 
   return (
     <>
-    <HeaderAdmin/>
+    <HeaderAdmin isProductPage={false}/>
     <div className="admin-page">
 
       <table>
