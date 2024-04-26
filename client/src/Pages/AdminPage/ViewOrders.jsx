@@ -8,14 +8,16 @@ const AdminPage = () => {
   const [orders, setOrders] = useState([]);
   const [displayOrders, setDisplayOrders] = useState([]);
   const [orderCount, setOrderCount] = useState(0)
+  const [selectedStatus, setSelectedStatus] = useState(null)
 
   axios.defaults.baseURL = "https://grupparbete.onrender.com";
 
   useEffect(() => {
     axios.get('/order/all')
       .then(response => {
-        setOrders(response.data);
-        setDisplayOrders(response.data.slice(0, 5))
+        const sortedOrders = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        setOrders(sortedOrders);
+        setDisplayOrders(sortedOrders.slice(0, 10))
       })
       .catch(error => {
         console.error('Error fetching orders:', error);
@@ -54,17 +56,47 @@ const AdminPage = () => {
     };
     return new Date(date).toLocaleString('en-US', options);
   };
-
   function loadMoreOrders() {
-    const additionalOrders = orders.slice(orderCount, orderCount + 5);
-    setDisplayOrders(prevOrders => [...prevOrders, ...additionalOrders]);
-    setOrderCount(prevCount => prevCount + 5);
+    const sourceOrders = selectedStatus === null ? orders : displayOrders;
+  
+    const additionalOrders = sourceOrders.slice(orderCount, orderCount + 10);
+    if (additionalOrders.length === 0) {
+      return;
+    }
+    if (selectedStatus === null) {
+      setDisplayOrders(prevOrders => [...prevOrders, ...additionalOrders]);
+    } else {
+      const filteredAdditionalOrders = additionalOrders.filter(order => order.status === selectedStatus);
+      setDisplayOrders(prevOrders => [...prevOrders, ...filteredAdditionalOrders]);
+    }
+    setOrderCount(prevCount => prevCount + 10);
+  }
+
+  const filterOrders = (status) => {
+    setSelectedStatus(status === 'null' ? null : status);
+    setOrderCount(0);
+    if (status === null || status === 'null') {
+      setDisplayOrders(orders.slice(0, 10));
+    } else {
+      const filteredOrders = orders.filter(order => order.status === status);
+      setDisplayOrders(filteredOrders.slice(0, 10));
+    }
   }
 
   return (
     <>
     <HeaderAdmin isProductPage={false}/>
     <div className="admin-page">
+    <div className="filter-buttons">
+  <select value={selectedStatus} onChange={(e) => filterOrders(e.target.value)}>
+    <option value="null">Alla</option>
+    <option value="Väntar">Väntande</option>
+    <option value="Packad">Packade</option>
+    <option value="Levererad">Levererade</option>
+    <option value="Makulerad">Makulerade</option>
+    <option value="Betald">Betald</option>
+  </select>
+</div>
 
       <table>
         <thead>
